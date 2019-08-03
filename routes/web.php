@@ -43,11 +43,27 @@ Route::get('/contactanos', function() {
 });
 
 
-Route::resource('hamburguers', 'BurgerController');
+//Administrador - Pagina principal
+Route::get('/administrador', 'UserController@administrar')->name('administrar')->middleware('auth');
 
-Route::get('/burger', 'BurgerController@index');
+// Rutas Admin Mostrar Listado
+Route::get('/administrador/usuarios', 'UserController@index')->middleware('auth');
+
+// Rutas Admin Create
 
 
+// Rutas Admin Edit
+Route::get('/administrador_editUsers/{id}', 'UserController@edit')->name('editarUsuario')->middleware('auth');
+Route::post('/administrador_editUsers/{id}', 'UserController@update')->name('actualizarUsuario')->middleware('auth');
+
+// Rutas Admin Delete
+
+//Usuario
+Route::get('users/{id}/destroy',
+[
+    'uses' => 'UserController@destroy',
+    'as' => 'eliminarUsuario'
+])->middleware('auth');
 
 
 

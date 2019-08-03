@@ -22,13 +22,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'ASC')->paginate(10);
+        $users = User::orderBy('id', 'ASC')->paginate(5);
         return view('administrador.usuarios')->with('users', $users);
     }
 
     public function administrar() {
         return view('administrador.index');
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +60,7 @@ class UserController extends Controller
     public function show()
     {
         $user = User::find(auth()->user()->id);
-        return view('auth.user_profile')->with('user',$user);
+        return view('auth.perfilUSuario')->with('user',$user);
     }
 
     /**
@@ -84,15 +85,16 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nombre' => 'required',
+            'name' => 'required',
             'lastname' => 'required',
             'email' => 'required'
         ]);
 
         $user = User::find($id);
-        $user->nombre = $request->nombre;
+        $user->name = $request->name;
         $user->lastname = $request->lastname;
         $user->email = $request->email;
+
         if ($request->tipo != null) {
             $user->tipo = $request->tipo;
         }
@@ -112,6 +114,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
+        return view('administrador.index');
     }
 
     //--------------------------------------------

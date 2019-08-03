@@ -7,9 +7,17 @@
     <label for="drop" class="toggle">Menu</label>
     <input type="checkbox" id="drop" />
     <ul class="menu mt-2 ml-auto">
+
         <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="#about" class="scroll">Ofertas</a></li>
-        <li><a href="#menu" class="scroll">Hamburguesas</a></li>
+        <li><a href="#menu" class="scroll">Productos</a></li>
+
+        @if( auth()->user() != null)
+            <li class="nav-item">
+                <a class="nav-link" href="/reserva_instalacion">Reservar Instalación</a>
+            </li>
+            <li><a href="#about" class="scroll">Ofertas</a></li>
+        @endif
+
         <li>
             <!-- First Tier Drop Down -->
             <label for="drop-2" class="toggle">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
@@ -17,7 +25,6 @@
             <input type="checkbox" id="drop-2" />
             <ul class="inner-ul">
                 <li><a class="scroll" href="#gallery">Gallery</a></li>
-                <li><a href="#services" class="scroll">Services</a></li>
                 <li><a href="#menu" class="scroll">Menu</a></li>
             </ul>
         </li>
@@ -34,6 +41,15 @@
             <li><a href="{{ route('login') }}">Login</a></li>
             <li><a href="{{ route('register') }}">Register</a></li>
         @else
+        @auth
+        @if(Auth::user()->tipo == 'administrador')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('administrar')}}">Administrar <span class="sr-only">(current)</span></a>
+                </li>
+        @endif
+
+    @endauth
+        
             <li class="inner-ul">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">
                     {{ Auth::user()->name }} <span class="caret"></span>

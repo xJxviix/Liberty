@@ -161,10 +161,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Illuminate\View\ViewServiceProvider::class,
-        'Collective\Html\HtmlServiceProvider',
-
-
+        Collective\Html\HtmlServiceProvider::class,
+        
         /*
         * Package Service Providers...
         */
@@ -179,9 +177,12 @@ return [
          */
         Liberty\Providers\AppServiceProvider::class,
         Liberty\Providers\AuthServiceProvider::class,
-        // Liberty\Providers\BroadcastServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
         Liberty\Providers\EventServiceProvider::class,
         Liberty\Providers\RouteServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+
+        
 
     ],
 
@@ -233,9 +234,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Form' => 'Illuminate\Html\FormFacade',
-        'Html' => 'Illuminate\Html\HtmlFacade',
+        'Form'=> 'Illuminate\Html\FormFacade'::class,
+        'Html'=> 'Illuminate\Html\HtmlFacade'::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
 
     ],
 

@@ -47,6 +47,7 @@
         @yield('content')
     </section>
 
+    @yield('script')
     <br>
     <!-- //contact -->
     <!-- footer -->

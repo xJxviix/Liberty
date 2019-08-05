@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="list-group-item active"><span class="glyphicon glyphicon-edit">
-                <span class="glyphicon glyphicon-edit"></span> Admin - Actualizar Perfil Usuario de: <b>{{ $user->name }}</b>
+                <span class="glyphicon glyphicon-edit"></span> Admin - Actualizar Perfil Usuario de <b>{{ $user->name }}</b>
                 </span></div>
 
                 <div class="card-body">

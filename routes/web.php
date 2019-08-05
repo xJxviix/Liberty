@@ -42,13 +42,20 @@ Route::get('/contactanos', function() {
     return view('contactanos');
 });
 
+/**
+ * Actividades
+ */
+Route::get('/actividades','ActivityController@index');
+Route::get('/actividades/reservaActividad/{id}', 'InscriptionController@reserva')->name('reserva_actividad')->middleware('auth');
+Route::post('/actividades/reservaActividad/{id}', 'InscriptionController@inscriptionToActivity')->name('reserva_actividad')->middleware('auth')->middleware('validated');
+Route::post('/actividades/reservaActividad/{id}/{email}', 'InscriptionController@inscriptionToActivity')->name('reservar_actividad')->middleware('auth')->middleware('validated');
 
 //Administrador - Pagina principal
 Route::get('/administrador', 'UserController@administrar')->name('administrar')->middleware('auth');
 
 // Rutas Admin Mostrar Listado
 Route::get('/administrador/usuarios', 'UserController@index')->middleware('auth');
-
+Route::get('/administrador/actividades', 'ActivityController@listarActividadesAdmin')->name('listarActividadesAdmin')->middleware('auth');
 // Rutas Admin Create
 
 
@@ -56,7 +63,16 @@ Route::get('/administrador/usuarios', 'UserController@index')->middleware('auth'
 Route::get('/administrador_editUsers/{id}', 'UserController@edit')->name('editarUsuario')->middleware('auth');
 Route::post('/administrador_editUsers/{id}', 'UserController@update')->name('actualizarUsuario')->middleware('auth');
 
+
 // Rutas Admin Delete
+
+
+// Actividad - CRUD - Actividad
+Route::get('/administrador_editActivity/{id}', 'ActivityController@edit')->name('editarActividad')->middleware('auth');
+Route::post('/administrador_createActivity', 'ActivityController@store')->name('crearActividad')->middleware('auth');
+Route::post('/administrador_editActivity/{activity}', 'ActivityController@update')->name('actualizarActividad')->middleware('auth');
+Route::get('/administrador_deleteActivity/{id}', 'ActivityController@destroy')->name('eliminarActividad')->middleware('auth');
+
 
 //Usuario
 Route::get('users/{id}/destroy',
@@ -65,5 +81,7 @@ Route::get('users/{id}/destroy',
     'as' => 'eliminarUsuario'
 ])->middleware('auth');
 
+
+Route::get('events', 'EventController@index');
 
 

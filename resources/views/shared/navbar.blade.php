@@ -8,8 +8,8 @@
     <input type="checkbox" id="drop" />
     <ul class="menu mt-2 ml-auto">
 
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="#menu" class="scroll">Productos</a></li>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="actividades" class="scroll">Actividades</a></li>
 
         @if( auth()->user() != null)
             <li class="nav-item">

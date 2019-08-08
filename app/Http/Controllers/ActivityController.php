@@ -23,7 +23,7 @@ class ActivityController extends Controller
                 ($activity->fecha . 'T' . $activity->hora_fin), //end time (you can also use Carbon instead of DateTime)
                 0, //optionally, you can specify an event ID
                 [
-                    'url' => route('register',  $activity->id),
+                    'url' => route('reserva_actividad',  $activity->id),
                     'color' => '#DF013A'
                 ]
             );

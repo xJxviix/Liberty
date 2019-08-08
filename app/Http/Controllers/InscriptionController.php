@@ -17,7 +17,7 @@ class InscriptionController extends Controller
         if ($activity == null) {
             return redirect('/');
         }else {
-            return view('actividades.reserva')->with('activity', $activity);
+            return view('actividades.register')->with('activity', $activity);
         }
 
     }

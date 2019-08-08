@@ -8,7 +8,9 @@ class Product extends Model
 {
     protected $table = "products";
 
-    protected $fillable = ['id', 'title', 'content', 'price', 'user_id', 'category_id'];
+    protected $fillable = ['id', 'nombre', 'descripcion', 'precio', 'nombreImagen', 'user_id', 'category_id'];
+
+    public $timestamps = true;
 
     /*
     Un producto puede tener solo una Categoria
@@ -17,4 +19,10 @@ class Product extends Model
     {
         return $this->belongsTo('Liberty\Category');
     }
+
+    public function user(){
+        return $this->belongsTo('Liberty\User');
+    }
+
+    
 }

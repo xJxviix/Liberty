@@ -8,11 +8,11 @@
     {{-- Linea de separación --}}
     <hr style="color: #0056b2;" />
 
-    @if (Auth::user()->tipo=='registrado')
+    @if (Auth::user()->tipo=='administrador')
 
     <div class="col-md-8 mx-auto">
         <div class="card rounded float-right" style="width: 100%;">
-                <div class="list-group-item active"><i class="fa fa-hand-lizard-o" aria-hidden="true"></i>Inscribirse en la actividad</div>
+                <div class="list-group-item active"><i class="fa fa-hand-lizard-o" aria-hidden="true"></i> Inscribirse en la actividad</div>
 
                 <div class="panel-body" style="margin-top: 2%;">
 

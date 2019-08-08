@@ -45,6 +45,8 @@
 
     <section>
         @yield('content')
+
+        
     </section>
 
     @yield('script')

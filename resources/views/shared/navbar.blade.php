@@ -9,11 +9,12 @@
     <ul class="menu mt-2 ml-auto">
 
         <li class="active"><a href="/">Home</a></li>
-        <li><a href="actividades" class="scroll">Actividades</a></li>
+        <li><a href="/productos" class="scroll">Productos</a></li>
+        <li><a href="/actividades" class="scroll">Actividades</a></li>
 
         @if( auth()->user() != null)
             <li class="nav-item">
-                <a class="nav-link" href="/reserva_instalacion">Reservar Instalación</a>
+                <a class="nav-link" href="/reserva_instalacion">Reservar Mesa</a>
             </li>
             <li><a href="#about" class="scroll">Ofertas</a></li>
         @endif
@@ -28,6 +29,7 @@
                 <li><a href="#menu" class="scroll">Menu</a></li>
             </ul>
         </li>
+        
         <li><a href="#testimonials" class="scroll">Contactanos</a></li>
     </ul>
 
@@ -41,14 +43,15 @@
             <li><a href="{{ route('login') }}">Login</a></li>
             <li><a href="{{ route('register') }}">Register</a></li>
         @else
+
+
         @auth
-        @if(Auth::user()->tipo == 'administrador')
+            @if(Auth::user()->tipo == 'administrador')
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('administrar')}}">Administrar <span class="sr-only">(current)</span></a>
                 </li>
-        @endif
-
-    @endauth
+            @endif
+        @endauth
         
             <li class="inner-ul">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">

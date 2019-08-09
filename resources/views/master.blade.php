@@ -31,6 +31,17 @@
     <link href="//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700" rel="stylesheet">
     <!-- //Fonts -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+<!--script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script-->
+
+
     <title>@yield('title')</title>
     
 </head>
@@ -41,17 +52,14 @@
         @include('shared.navbar')
     </div>
 
-    <br>
-
     <section>
+    {{-- Linea de separación --}}
+      <hr style="color: #0056b2;" />
         @yield('content')
-
-        
     </section>
 
     @yield('script')
-    <br>
-    <!-- //contact -->
+
     <!-- footer -->
     <footer class="footer-content">
         <div class="layer footer">

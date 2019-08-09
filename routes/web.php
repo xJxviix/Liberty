@@ -27,8 +27,15 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-Route::get('/perfilUsuario/{id}', 'UserController@editUser')->name('usuario');
-Route::post('/perfilUsuario/{id}', 'UserController@updateUser')->name('usuario');
+//Route::get('/perfilUsuario/{id}', 'UserController@editUser')->name('usuario');
+//Route::post('/perfilUsuario/{id}', 'UserController@updateUser')->name('usuario');
+
+/*
+Perfil Usuario
+*/
+Route::get('/perfilUsuario/{id}', 'UserController@editUser')->middleware('auth');
+Route::post('/perfilUsuario/{id}', 'UserController@updateUser')->middleware('auth');
+
 
 /**
  * Contactanos
@@ -69,7 +76,6 @@ Route::get('users/{id}/destroy',
     'as' => 'eliminarUsuario'
 ])->middleware('auth');
 
-
 //Productos
 
 Route::post('/administrador_createProduct', 'ProductController@store')->name('crearProducto')->middleware('auth');
@@ -86,16 +92,11 @@ Route::get('categories/{id}/destroy',
 ])->middleware('auth');
 
 
-
-
 // Actividad - CRUD - Actividad
 Route::get('/administrador_editActivity/{id}', 'ActivityController@edit')->name('editarActividad')->middleware('auth');
 Route::post('/administrador_createActivity', 'ActivityController@store')->name('crearActividad')->middleware('auth');
 Route::post('/administrador_editActivity/{activity}', 'ActivityController@update')->name('actualizarActividad')->middleware('auth');
 Route::get('/administrador_deleteActivity/{id}', 'ActivityController@destroy')->name('eliminarActividad')->middleware('auth');
 
-
-
-Route::get('events', 'EventController@index');
 
 

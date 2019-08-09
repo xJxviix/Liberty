@@ -1,16 +1,23 @@
 @extends('layouts.admin')
-@section('title', 'Administración de Productos')
+@section('title', 'Administración de Categorias')
 @section('content')
 
 
-<table class="table table-bordered">
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title"><strong>Admin Categorias</strong></h3>
+      {{-- Linea de separación --}}
+      <hr style="color: #0056b2;" />
+      {{-- @include('admin/errors')
+      @include('flash::message') --}}
+      <table class="table table-bordered">
+ 
       <thread>
           <th>ID</th>
           <th>Nombre Categoria</th>
           <th>Acción</th>
       </thread>
       <tbody>
-            <form method="POST" action="{{ route('crearCategoria') }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ route('crearCategoria') }}" enctype="multipart/form-data">
                     @csrf
                         <tr>
                             <td></td>
@@ -29,7 +36,7 @@
                             </td>
 
                             <td>
-                                <button  type="submit" class="btn btn-success"><span class="glyphicon glyphicon glyphicon-save" area-hiden="true"></span></button>
+                                <button  type="submit" class="btn btn-success">Añadir <span class="glyphicon glyphicon glyphicon-save" area-hiden="true"></span></button>
                             </td>
                         </tr>
                     </form>
@@ -46,7 +53,7 @@
       </tbody>
   </table>
   {!! $categories->render() !!}
-  </div>
+</div>
 </div>
 
 @endsection

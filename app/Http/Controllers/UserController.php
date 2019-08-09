@@ -1,17 +1,11 @@
 <?php
 
-namespace Liberty\Http\Controllers;
-use Liberty\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+namespace Liberty\Http\Controllers;
 use Liberty\User;
-use Validator;
-use Liberty\Http\Requests\UserRequest;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\sendMail;
-use Storage;
 use Laracasts\Flash\FlashServiceProvider;
-use Intervention\Image\ImageManagerStatic as Image;
+use Liberty\Http\Requests\UserRequest;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -60,7 +54,7 @@ class UserController extends Controller
     public function show()
     {
         $user = User::find(auth()->user()->id);
-        return view('auth.perfilUSuario')->with('user',$user);
+        return view('auth.user_profile')->with('user',$user);
     }
 
     /**
@@ -138,9 +132,7 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->lastname = $request->input('lastname');
-        $user->save();
-
-        $request->session()->flash('success', 'El usuario se ha actualizado correctamente');
+        $user->save();                
         return back();
     }
 

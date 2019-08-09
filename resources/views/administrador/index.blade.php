@@ -1,39 +1,53 @@
 @extends('master')
 @section('title','Administrador')
 @section('content')
-    <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 2%;margin-left:2%">
-        <li class="nav-item">
-            <a class="nav-link active" id="usuario-tab" data-toggle="tab" href="" role="tab" aria-controls="home" aria-selected="true">Usuarios</a>
-        </li>
 
-        <li class="nav-item">
-            <a class="nav-link" id="instalaciones-tab" data-toggle="tab" href="" role="tab" aria-controls="profile" aria-selected="false">Instalaciones</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="actividades-tab" data-toggle="tab" href="" role="tab" aria-controls="contact" aria-selected="false">Actividades</a>
-        </li>
-        <li class="nav-item">
-                <a class="nav-link" id="reservas-tab" data-toggle="tab" href="" role="tab" aria-controls="contact" aria-selected="false">Reserva</a>
-        </li>
-    </ul>
+<div class="mid-sec py-5" >
+  <ul class="nav nav-tabs">
+    <li class="active settingshead"><a href="#first" data-toggle="tab">Usuarios</a></li>
+    <li class="settingshead"><a href="#second" data-toggle="tab">Productos</a></li>
+    <li class="settingshead"><a href="#third" data-toggle="tab">Actividades</a></li>
+    <li class="settingshead"><a href="#fourth" data-toggle="tab">Reservas</a></li>
+    <li class="settingshead"><a href="#five" data-toggle="tab">Categorias</a></li>
+  </ul>
+</div>
+{{-- Linea de separación --}}
+    <hr style="color: #0056b2;" />
 
-    <div class="tab-content" id="myTabContent" style="margin-top: 1%;margin-left:2%">
-        <div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuario-tab">
-            <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="/administrador/usuarios" scrolling="no" frameBorder="0">
+<div class="tab-content">
+  <div class="tab-pane active" id="first">
+      <div class="namedesig">
+      <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="/administrador/usuarios" scrolling="no" frameBorder="0">
             </iframe>
-        </div>
-        <div class="tab-pane fade show" id="instalaciones" role="tabpanel" aria-labelledby="instalaciones-tab">
-            <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="/administrador/instalaciones" scrolling="no" frameBorder="0">
-            </iframe>
-        </div>
-        <div class="tab-pane fade show" id="actividades" role="tabpanel" aria-labelledby="actividades-tab">
-        <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="{{route('listarActividadesAdmin')}}" scrolling="no" frameBorder="0">
-            </iframe>
-        </div>
-        <div class="tab-pane fade show" id="reservas" role="tabpanel" aria-labelledby="reservas-tab">
-            <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="/administrador/reservas" scrolling="no" frameBorder="0">
-            </iframe>
-        </div>
-
     </div>
+  </div>
+  <div class="tab-pane" id="second">
+    <div class="namedesig">
+      <h4>Dr. Martin</h4>
+      <p>PhD in Applied Chemistry</p>
+    </div>
+  </div>
+  <div class="tab-pane" id="third">
+    <div class="namedesig">
+    <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="{{route('listarActividadesAdmin')}}" scrolling="no" frameBorder="0">
+            </iframe>
+    </div>
+  </div>
+  <div class="tab-pane" id="fourth">
+    <div class="namedesig">
+      <h4>Dr. Watson</h4>
+      <p>PhD in Applied Math</p>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="five">
+    <div class="namedesig">
+    <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="/administrador/categorias" scrolling="no" frameBorder="0">
+            </iframe>
+    </div>
+  </div>
+
+
+
+</div>
 @endsection

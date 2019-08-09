@@ -12,7 +12,8 @@
 
 <div class="panel panel-default">
   <div class="panel-heading"><h3 class="panel-title"><strong>Admin Users</strong></h3>
-      <br/>
+  {{-- Linea de separación --}}
+    <hr style="color: #0056b2;" />
       {{-- @include('admin/errors')
       @include('flash::message') --}}
       <table class="table table-bordered">

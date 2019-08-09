@@ -2,9 +2,7 @@
 
 namespace Liberty\Http\Controllers;
 use Liberty\Category;
-
 use Illuminate\Http\Request;
-
 use Liberty\Http\Controllers\Controller;
 use Validator;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +23,7 @@ class CategoryController extends Controller
 
     protected function adminIndex(){
 
-        $categories = Category::orderBy('id', 'ASC')->paginate(3);
+        $categories = Category::orderBy('id', 'ASC')->paginate(4);
         return view('administrador.categorias')->with('categories', $categories);
     }
 
@@ -59,14 +57,14 @@ class CategoryController extends Controller
         $categories->save();
 
         $request->session()->flash('success', 'La categoria se ha actualizado correctamente');
-        return back();
+        return view('administrador.index');
     }
 
     public function destroy($id)
     {
         $categories = Category::find($id);
         $categories->delete();
-        return back();
+        return view('administrador.index');
     }
 
 }

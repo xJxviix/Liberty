@@ -19,6 +19,7 @@
     </script>
     <!-- //Meta tag Keywords -->
     <!-- Custom-Files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="{{ URL::asset('hamburguer/css/bootstrap.css') }}">
     <!-- Bootstrap-Core-CSS -->
     <link rel="stylesheet" href="{{ URL::asset('hamburguer/css/style.css') }}" type="text/css" media="all" />
@@ -42,19 +43,47 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script-->
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/pricing.css') }}">
+    <link rel="stylesheet" href="{{ asset('hamburguer/css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+
+    
+
     <title>@yield('title')</title>
     
-</head>
+    <script src="{{ asset('frontend/js/jquery-1.11.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/js/jquery.flexslider.min.js') }}"></script>
+    <script type="text/javascript">
+        $(window).load(function() {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlsContainer: ".flexslider-container"
+            });
+        });
+    </script>
+
+    </head>
 
 <body>
+
+
     <!-- main-content -->
     <div class="Menu">
         @include('shared.navbar')
     </div>
 
     <section>
-    {{-- Linea de separación --}}
-      <hr style="color: #0056b2;" />
         @yield('content')
     </section>
 
@@ -135,6 +164,37 @@
         </div>
     </footer>
     <!-- //footer -->
+
+
+    <script src="{{ asset('frontend/js/script.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        <script>
+            toastr.error('{{ $error }}');
+        </script>
+        @endforeach
+    @endif
+
+    <script>
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                format: "dd MM yyyy - HH:11 P",
+                showMeridian: true,
+                autoclose: true,
+                todayBtn: true
+            });
+        })
+    </script>
+    {!! Toastr::message() !!}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+
 
 </body>
 

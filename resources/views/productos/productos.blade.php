@@ -4,9 +4,6 @@
 
 @section('content')
 
-{{-- Linea de separación --}}
-    <hr style="color: #0056b2;" />
-
     <!--// about -->
     <!--/mid-sec-->
     <section class="mid-sec py-5" id="menu">

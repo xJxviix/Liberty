@@ -11,11 +11,12 @@
         <li class="active"><a href="/">Home</a></li>
         <li><a href="/productos" class="scroll">Productos</a></li>
         <li><a href="/actividades" class="scroll">Actividades</a></li>
+        <li class="nav-item">
+                <a class="nav-link" href="/reserva">Reservar Mesa</a>
+        </li>
 
         @if( auth()->user() != null)
-            <li class="nav-item">
-                <a class="nav-link" href="/reserva_instalacion">Reservar Mesa</a>
-            </li>
+
             <li><a href="#about" class="scroll">Ofertas</a></li>
         @endif
 

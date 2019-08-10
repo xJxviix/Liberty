@@ -27,9 +27,6 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-//Route::get('/perfilUsuario/{id}', 'UserController@editUser')->name('usuario');
-//Route::post('/perfilUsuario/{id}', 'UserController@updateUser')->name('usuario');
-
 /*
 Perfil Usuario
 */
@@ -49,7 +46,14 @@ Route::get('/contactanos', function() {
  */
 Route::get('/productos', 'ProductController@index');
 
+/**
+ * Reservar Mesa 
+ * Route::get('/reserva', 'ReservationController@index');
+*  Route::get('/reservation','ReservationController@reserve')->name('reserve');
 
+ */
+Route::get('/reserva', 'ReservationController@index');
+Route::post('/crearReserva', 'ReservationController@store')->name('crearReserva');
 /**
  * Actividades
  */

@@ -5,6 +5,12 @@
 	License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 
+/*=================================================
+||				1. Imports 
+==================================================*/
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,400);
+@import url(http://fonts.googleapis.com/css?family=Raleway:100,400,700);
+
 html,
 body {
     margin: 0;
@@ -1552,5 +1558,158 @@ a.move-top span {
         width: 100%;
     }
 }
+
+/*=================================================
+||				15. Reserve A Table!
+==================================================*/
+.reserve .section-bg
+{
+	background-image: url('../images/RaT-bg.jpg');
+}
+
+.reservation .section-content
+{
+	padding: 5% 15% 5% 20%;
+}
+
+.reservation-form 
+{
+	margin-top: -20px;
+}
+
+.opening-time 
+{
+	background-color: rgb(107, 132, 216);
+	color: #fff;
+	margin-top: -50px;
+	padding: 20px 40px;
+	border-radius: 4px;
+}
+
+.opening-time-title 
+{
+	margin-top: 0px;
+	margin-bottom: 25px;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+.opening-time p 
+{
+    margin-bottom: 2px;
+}
+
+.opening-time h4 
+{
+    margin-bottom: 6px;
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+  outline: none; 
+}
+
+.btn {
+  border-radius: 0; 
+  letter-spacing: 2px; 
+}
+
+.btn:hover {
+	transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.btn-middle {
+	background-color: transparent;
+	padding: 15px 30px;
+	border: 1px solid #8bc34a;
+	color: #5c9233;
+	margin: 25px 0px;
+}
+
+.btn-middle:hover {
+	background-color: #8bc34a;
+	color: #fff;
+	box-shadow: 0px 2px 5px #948E8E;
+}
+
+.btn-send,
+.btn-reservation {
+	background-color: rgb(74, 96, 195);
+	padding: 10px 50px;
+	box-shadow: 0px 2px 5px #948E8E;
+	color: #fff;
+	margin: 20px 0px;
+}
+
+.btn-send:hover,
+.btn-reservation:hover {
+	background-color: #9759b4;
+	color: #eee;
+
+}
+
+.btn-reservation {
+	width: 100%;
+	margin: 0px;
+}
+
+.dis-table
+{
+	display: table;
+	/*width: 100vw;*/
+}
+.dis-table .dis-table-cell
+{
+	display: table-cell;
+	padding: 0;
+	float: none;
+	/*width: 50vw;*/
+	/*position: relative;*/
+}
+.color-bg
+{
+	background: #8bc34a;
+}
+.section-bg
+{
+	background-size: cover;
+	background-repeat: no-repeat;
+    background-position: center;
+}
+
+.form-control {
+	border-radius: 0px;
+	margin-bottom: 25px;
+}
+
+input.empty, textarea.empty {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
+.section-icon
+{
+	position: absolute;
+	left: 47%;
+	margin-left: -21px;
+	margin-top: 58px;
+	z-index: 999;
+}
+/*.wrapper
+{
+	margin-top: 50px;
 
 /*-- //Responsive design --*/

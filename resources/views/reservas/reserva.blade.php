@@ -52,6 +52,13 @@
                                     </div>
                                 </div>
 
+
+                                <div class="col-md-8 col-sm-8">
+                                    <div class="form-group">
+                                        <input type="num" class="form-control reserve-form empty iconified" name="num" id="num"  placeholder="  &#xf007;  Núm. Personas. min: 4 - max:15">
+                                    </div>
+                                </div>
+
                                 <div class="col-md-12 col-sm-12">
                                     <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3"  placeholder="  &#xf086;  Comentarios"></textarea>
                                 </div>

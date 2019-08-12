@@ -18,25 +18,28 @@
   <div class="tab-pane active" id="first">
       <div class="namedesig">
       <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="/administrador/usuarios" scrolling="no" frameBorder="0">
-            </iframe>
+      </iframe>
     </div>
   </div>
+
   <div class="tab-pane" id="second">
     <div class="namedesig">
       <h4>Dr. Martin</h4>
       <p>PhD in Applied Chemistry</p>
     </div>
   </div>
+
   <div class="tab-pane" id="third">
     <div class="namedesig">
-    <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="{{route('listarActividadesAdmin')}}" scrolling="no" frameBorder="0">
-            </iframe>
+      <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="{{route('listarActividadesAdmin')}}" scrolling="no" frameBorder="0">
+      </iframe>
     </div>
   </div>
+
   <div class="tab-pane" id="fourth">
     <div class="namedesig">
-      <h4>Dr. Watson</h4>
-      <p>PhD in Applied Math</p>
+      <iframe style="height: -webkit-fill-available; width: -webkit-fill-available; margin-right: 2%" src="/administrador/reservas" scrolling="no" frameBorder="0">
+      </iframe>
     </div>
   </div>
 

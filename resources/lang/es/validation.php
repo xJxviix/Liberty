@@ -23,7 +23,7 @@ return [
     'before'               => ':attribute debe ser una fecha anterior a :date.',
     'before_or_equal'      => ':attribute debe ser una fecha anterior o igual a :date.',
     'between'              => [
-        'numeric' => ':attribute tiene que estar entre :min - :max.',
+        'numeric' => 'El número de personas tiene que estar entre :min - :max.',
         'file'    => ':attribute debe pesar entre :min - :max kilobytes.',
         'string'  => ':attribute tiene que tener entre :min - :max caracteres.',
         'array'   => ':attribute tiene que tener entre :min - :max ítems.',
@@ -114,8 +114,9 @@ return [
     'uploaded'             => 'Subir :attribute ha fallado.',
     'url'                  => 'El formato :attribute es inválido.',
     'uuid'                 => 'El campo :attribute debe ser un UUID válido.',
-
-    /*
+    'num'    => 'El minimo de personas para reservar una mesa es entre :min  y :max personas.',
+    
+        /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
     |--------------------------------------------------------------------------
@@ -133,6 +134,7 @@ return [
         'email'    => [
             'unique' => 'El :attribute ya ha sido registrado.',
         ],
+
     ],
 
     /*

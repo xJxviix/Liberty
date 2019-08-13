@@ -9,7 +9,7 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
+            <a class="nav-link" href="/administrar">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
@@ -41,7 +41,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/administrador/reservas">
                 <i class="material-icons">content_paste</i>
                 <p>Reservas</p>
                 </a>

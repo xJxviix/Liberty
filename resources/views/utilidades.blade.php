@@ -287,3 +287,20 @@
                 </li>
             </ul>
         </div>
+
+
+
+
+
+        <li class="nav-item dropdown">
+                <!-- First Tier Drop Down -->
+                <label for="drop-2" class="toggle">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+                <a href="#">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                <input type="checkbox" id="drop-2" />
+                <ul class="inner-ul">
+                    <li><a class="scroll" href="#gallery">Gallery</a></li>
+                    <li><a href="#menu" class="scroll">Menu</a></li>
+                    <li><a href="#menu" class="scroll">Menu</a></li>
+                    <li><a href="#menu" class="scroll">Menu</a></li>
+                </ul>
+            </li>

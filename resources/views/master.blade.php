@@ -4,7 +4,7 @@
 <head>
     
     <!-- Meta tag Keywords -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
     <meta name="keywords" content="Liberty" />
     <script>
@@ -17,6 +17,7 @@
         }
 
     </script>
+
     <!-- //Meta tag Keywords -->
     <!-- Custom-Files -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
@@ -32,16 +33,13 @@
     <link href="//fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700" rel="stylesheet">
     <!-- //Fonts -->
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-<!--script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script-->
-
+    <!-- //FullCalendar -->
+    <link href="{{ asset('assets/css/bootstrap-responsive.css') }}" rel="stylesheet">
+    <script src="{{ asset('frontend/js/jquery-1.11.2.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+    <!-- //FullCalendar -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
@@ -58,10 +56,9 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 
-    
+
 
     <title>@yield('title')</title>
-    
     <script src="{{ asset('frontend/js/jquery-1.11.2.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/jquery.flexslider.min.js') }}"></script>
     <script type="text/javascript">
@@ -73,11 +70,9 @@
         });
     </script>
 
-    </head>
+</head>
 
 <body>
-
-
     <!-- main-content -->
     <div class="Menu">
         @include('shared.navbar')
@@ -165,7 +160,14 @@
     </footer>
     <!-- //footer -->
 
-
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/js/jquery.mixitup.min.js') }}" ></script>
+    <script src="{{ asset('frontend/js/wow.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.validate.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/js/jquery.hoverdir.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/js/jQuery.scrollSpeed.js') }}"></script>
+ 
     <script src="{{ asset('frontend/js/script.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -189,12 +191,11 @@
     </script>
     {!! Toastr::message() !!}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-
+     <!-- //FullCalendar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+    <!-- //FullCalendar -->
 
 </body>
 

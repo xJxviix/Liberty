@@ -6,9 +6,8 @@
 
 <section id="reserve" class="reserve">
 
-<p><center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcQwgs4bcA0X2jJDpt56tj52UdUFGcgtZSrR9hyCZINvGcop2_"></center>
-   </p>
-     <div class="wrapper">
+    <p><center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcQwgs4bcA0X2jJDpt56tj52UdUFGcgtZSrR9hyCZINvGcop2_"></center></p>
+        <div class="wrapper">
         <div class="container-fluid">
             <div class="row dis-table">
                 <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
@@ -48,7 +47,7 @@
                                         <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone"  placeholder="  &#xf095;  Teléfono">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control reserve-form empty iconified" name="dateandtime" id="datetimepicker1" placeholder="&#xf017;  Hora">
+                                        <input type="text" class="form-control reserve-form empty iconified" name="dateandtime" id="datetimepicker1" placeholder="&#xf017;  Time">
                                     </div>
                                 </div>
 

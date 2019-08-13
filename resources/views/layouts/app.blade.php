@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <!-- Bootstrap core CSS     -->
-    <link href="{{ asset('backend/css/material-dashboard.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('backend/css/bootstrap.min.css') }}" rel="stylesheet" />
     <!--  Material Dashboard CSS    -->
     <link href="{{ asset('backend/css/material-dashboard.css') }}" rel="stylesheet" />
     <!--  CSS for Demo Purpose, don't include it in your project     -->
@@ -26,18 +26,27 @@
 <body>
     <div id="app">
         <div class="wrapper">
-            @if(Request::is('admin*'))
-                @include('layouts.partial.sidebar')
-            @endif
+
+        @auth
+            
             <div class="main-panel">
-                @if(Request::is('admin*'))
+                @if(Auth::user()->tipo == 'administrador')
                     @include('layouts.partial.topbar')
                 @endif
-                    @yield('content')
-                @if(Request::is('admin*'))
+
+                @if(Auth::user()->tipo == 'administrador')
+                    @include('layouts.partial.sidebar')
+                @endif
+                
+                @yield('content')
+                
+                @if(Auth::user()->tipo == 'administrador')
                     @include('layouts.partial.footer')
                 @endif
             </div>
+        @endauth
+
+
         </div>
     </div>
 

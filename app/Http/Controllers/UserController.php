@@ -24,6 +24,10 @@ class UserController extends Controller
         return view('administrador.index');
     }
 
+    public function dashboard() {
+        return view('administrador.dashboard');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

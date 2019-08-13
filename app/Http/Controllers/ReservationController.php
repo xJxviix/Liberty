@@ -80,9 +80,8 @@ class ReservationController extends Controller
         $reservation->message = $request->message;
         $reservation->status = false;
         $reservation->save();
-         Toastr::success('Su solicitud de reserva ha sido enviada con éxito. 
-         Le confirmaremos con la menor brevedad.','Success',["positionClass" => "toast-top-right"]);
-           
+        Toastr::success('Su solicitud de reserva ha sido enviada con éxito. 
+        Le confirmaremos con la menor brevedad.','Success',["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 

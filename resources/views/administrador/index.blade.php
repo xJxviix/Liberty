@@ -1,7 +1,7 @@
 @extends('master')
 @section('title','Administrador')
 @section('content')
-
+<div class="container">
 <div class="mid-sec py-5" >
   <ul class="nav nav-tabs">
     <li class="active settingshead"><a href="#first" data-toggle="tab">Usuarios</a></li>
@@ -49,7 +49,7 @@
             </iframe>
     </div>
   </div>
-
+</div>
 
 
 </div>

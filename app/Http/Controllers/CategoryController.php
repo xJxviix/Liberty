@@ -23,9 +23,20 @@ class CategoryController extends Controller
 
     protected function adminIndex(){
 
-        $categories = Category::orderBy('id', 'ASC')->paginate(4);
+        $categories = Category::all();
         return view('administrador.categorias')->with('categories', $categories);
     }
+
+        /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('categorias.create');
+    }
+
 
     public function store(Request $request)
     {
@@ -37,14 +48,14 @@ class CategoryController extends Controller
         $categories->name = $request->name;
 
         $categories->save();;
-        return redirect()->back();
+        return redirect()->back()->with('successMsg','Se ha creado la categoria correctamente');
    
     }
 
     public function edit($id)
     {
         $categories=Category::find($id);  
-        return view('administrador.editCategory', ['categories' => $categories]);
+        return view('categorias.edit', ['categories' => $categories]);
     }
 
     public function update(Request $request, $id){
@@ -55,16 +66,14 @@ class CategoryController extends Controller
         $categories = Category::find($id);
         $categories->name = $request->name;
         $categories->save();
-
-        $request->session()->flash('success', 'La categoria se ha actualizado correctamente');
-        return view('administrador.index');
+        return redirect()->back()->with('successMsg','Se ha actualizado la categoria correctamente');
     }
 
     public function destroy($id)
     {
         $categories = Category::find($id);
         $categories->delete();
-        return view('administrador.index');
+        return redirect()->back()->with('successMsg','Se ha eliminado la categoria correctamente');
     }
 
 }

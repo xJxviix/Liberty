@@ -65,12 +65,13 @@ Route::post('/actividades/reservaActividad/{id}/{email}', 'InscriptionController
 
 //Administrador - Pagina principal
 Route::get('/administrador', 'UserController@administrar')->name('administrar')->middleware('auth');
+Route::get('/administrar', 'UserController@dashboard')->name('administrar')->middleware('auth');
 
 // Rutas Admin Mostrar Listado
 Route::get('/administrador/usuarios', 'UserController@index')->middleware('auth');
 Route::get('/administrador/actividades', 'ActivityController@listarActividadesAdmin')->name('listarActividadesAdmin')->middleware('auth');
 Route::get('/administrador/productos', 'ProductController@adminIndex')->middleware('auth');
-Route::get('/administrador/categorias', 'CategoryController@adminIndex')->middleware('auth');
+Route::get('/administrador/categorias', 'CategoryController@adminIndex')->name('mostrarCategoria')->middleware('auth');
 Route::get('/administrador/reservas', 'ReservationController@adminIndex')->middleware('auth');
 
 // Usuarios
@@ -87,7 +88,7 @@ Route::get('users/{id}/destroy',
 Route::post('/administrador_createProduct', 'ProductController@store')->name('crearProducto')->middleware('auth');
 
 //Categorias
-
+Route::get('/administrador_createCategory', 'CategoryController@create')->name('AñadirCategoria')->middleware('auth');
 Route::post('/administrador_createCategory', 'CategoryController@store')->name('crearCategoria')->middleware('auth');
 Route::get('/administrador_editCategory/{id}', 'CategoryController@edit')->name('editarCategoria')->middleware('auth');
 Route::post('/administrador_editCategory/{id}', 'CategoryController@update')->name('actualizarCategoria')->middleware('auth');
@@ -116,6 +117,7 @@ Route::get('/administrador_editActivity/{id}', 'ActivityController@edit')->name(
 Route::post('/administrador_createActivity', 'ActivityController@store')->name('crearActividad')->middleware('auth');
 Route::post('/administrador_editActivity/{activity}', 'ActivityController@update')->name('actualizarActividad')->middleware('auth');
 Route::get('/administrador_deleteActivity/{id}', 'ActivityController@destroy')->name('eliminarActividad')->middleware('auth');
+
 
 
 

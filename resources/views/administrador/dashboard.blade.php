@@ -9,14 +9,14 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
+        <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-stats">
                         <div class="card-header" data-background-color="orange">
                             <i class="material-icons">content_copy</i>
                         </div>
                         <div class="card-content">
-                            <p class="category">Category / Item</p>
+                            <p class="category">Category</p>
                             <h3 class="title">
                             </h3>
                         </div>

@@ -23,14 +23,14 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Name</label>
+                                            <label class="control-label">Nombre</label>
                                             <input type="text" class="form-control" name="name" value="{{ $categories->name }}">
                                         </div>
                                     </div>
                                 </div>
 
-                                <a href="{{ route('mostrarCategoria') }}" class="btn btn-danger">Back</a>
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <a href="{{ route('mostrarCategoria') }}" class="btn btn-danger">Atrás</a>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
                             </form>
                         </div>
                     </div>

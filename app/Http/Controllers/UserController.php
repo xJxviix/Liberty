@@ -6,6 +6,7 @@ use Liberty\User;
 use Laracasts\Flash\FlashServiceProvider;
 use Liberty\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -16,8 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'ASC')->paginate(5);
-        return view('administrador.usuarios')->with('users', $users);
+        //
     }
 
     public function administrar() {
@@ -28,6 +28,12 @@ class UserController extends Controller
         return view('administrador.dashboard');
     }
 
+    protected function adminIndex(){
+
+        $users = User::all();
+        return view('administrador.usuarios')->with('users', $users);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +41,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('usuarios.create');
     }
 
     /**
@@ -46,7 +52,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'lastname' => 'required',
+            'email' => 'required','string', 'email', 'max:255', 'unique:users',
+            'password' => 'required|min:8|nullable',
+        ]);
+
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->lastname = $request->input('lastname');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request['password']);
+        if(empty($data['photo'])){
+            $img_route = "seeds/default.png";
+        }
+
+        $user->photo = $img_route;
+        $user->save();
+        return redirect()->back()->with('successMsg','Se ha creado el usuario correctamente');
     }
 
     /**
@@ -70,7 +94,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('administrador.editUsers')->with('user',$user);
+        return view('usuarios.edit')->with('user',$user);
     }
 
     /**
@@ -98,8 +122,7 @@ class UserController extends Controller
         }
 
         $user->save();
-        $request->session()->flash('success', 'El usuario se ha actualizado correctamente');
-        return back();
+        return redirect()->back()->with('successMsg','Se ha actualizado el usuario correctamente');
     }
 
     /**
@@ -112,7 +135,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return view('administrador.index');
+        return redirect()->back()->with('successMsg','El usuario se ha eliminado correctamente');
     }
 
     //--------------------------------------------

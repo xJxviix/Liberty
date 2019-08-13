@@ -16,7 +16,7 @@
             </li>
 
             <li class="nav-item ">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="/administrador/usuarios">
                 <i class="material-icons">person</i>
                 <p>Usuarios</p>
                 </a>
@@ -29,19 +29,19 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="#">
                 <i class="material-icons">content_paste</i>
                 <p>Actividades</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="#">
                 <i class="material-icons">content_paste</i>
                 <p>Productos</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./tables.html">
+                <a class="nav-link" href="#">
                 <i class="material-icons">content_paste</i>
                 <p>Reservas</p>
                 </a>

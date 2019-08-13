@@ -1,6 +1,3 @@
-
-
-
 @extends('layouts.app')
 
 @section('title','Admin Categorias')
@@ -27,24 +24,18 @@
                                 <th>Name</th>
                                 <th>Action</th>
                                 </thead>
+
                                 <tbody>
                                     @foreach($categories as $key=>$cat)
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $cat->id}}</td>
                                             <td>{{ $cat->name }}</td>
                                             <td>
                                                 <a href="{{ route('editarCategoria', $cat->id) }}" method="GET" target="_parent" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a>
 
-                                                <a id="delete-form-{{ $cat->id }}" action="{{route('eliminarCategoria',$cat->id)}}" 
-                                                    @csrf
-                                                    @method('DELETE')
+                                                <a id="delete-form-{{ $cat->id }}" href="{{route('eliminarCategoria',$cat->id)}}" class="btn btn-danger btn-sm" target="_parent" 
+                                                onclick="return confirm('¿Estas seguro que quieres eliminar la categoria?')"><i class="material-icons">delete</i></a>
                                                 </a>
-                                                <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure? You want to delete this?')){
-                                                event.preventDefault();
-                                                    document.getElementById('delete-form-{{ $cat->id }}').submit();
-                                                }else {
-                                                    event.preventDefault();
-                                                        }"><i class="material-icons">delete</i></button>
                                             </td>
                                         </tr>
                                     @endforeach

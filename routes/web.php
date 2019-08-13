@@ -68,13 +68,15 @@ Route::get('/administrador', 'UserController@administrar')->name('administrar')-
 Route::get('/administrar', 'UserController@dashboard')->name('administrar')->middleware('auth');
 
 // Rutas Admin Mostrar Listado
-Route::get('/administrador/usuarios', 'UserController@index')->middleware('auth');
+Route::get('/administrador/usuarios', 'UserController@adminIndex')->name('mostrarUsuario')->middleware('auth');
 Route::get('/administrador/actividades', 'ActivityController@listarActividadesAdmin')->name('listarActividadesAdmin')->middleware('auth');
 Route::get('/administrador/productos', 'ProductController@adminIndex')->middleware('auth');
 Route::get('/administrador/categorias', 'CategoryController@adminIndex')->name('mostrarCategoria')->middleware('auth');
 Route::get('/administrador/reservas', 'ReservationController@adminIndex')->middleware('auth');
 
 // Usuarios
+Route::get('/administrador_createUser', 'UserController@create')->name('AñadirUsuario')->middleware('auth');
+Route::post('/administrador_addUser', 'UserController@store')->name('crearUsuario')->middleware('auth');
 Route::get('/administrador_editUsers/{id}', 'UserController@edit')->name('editarUsuario')->middleware('auth');
 Route::post('/administrador_editUsers/{id}', 'UserController@update')->name('actualizarUsuario')->middleware('auth');
 Route::get('users/{id}/destroy',

@@ -27,7 +27,7 @@ class CategoryController extends Controller
         return view('administrador.categorias')->with('categories', $categories);
     }
 
-        /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

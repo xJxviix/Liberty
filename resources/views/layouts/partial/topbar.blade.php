@@ -12,30 +12,15 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
            
-                <li>
-                    <form class="navbar-form">
-                        <div class="input-group no-border">
-                            <input type="text" value="" class="form-control" placeholder="Search...">
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                            <i class="material-icons">search</i>
-                            <div class="ripple-container"></div>
-                            </button>
-                        </div>
-                    </form>
-                </li>
+
             
                 <li>
-                    <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="{{ route('administrar') }}" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="material-icons">dashboard</i>
                         <p class="hidden-lg hidden-md">Dashboard</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="material-icons">person</i>
-                        <p class="hidden-lg hidden-md">Usuario</p>
-                    </a>
-                </li>
+
                 <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         <i class="material-icons">exit_to_app</i>

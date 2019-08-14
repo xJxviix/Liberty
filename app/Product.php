@@ -8,7 +8,8 @@ class Product extends Model
 {
     protected $table = "products";
 
-    protected $fillable = ['id', 'nombre', 'descripcion', 'precio', 'nombreImagen', 'user_id', 'category_id'];
+    protected $fillable = ['id', 'nombre', 'descripcion', 
+    'precio', 'nombreImagen', 'category_id'];
 
     public $timestamps = true;
 
@@ -20,9 +21,4 @@ class Product extends Model
         return $this->belongsTo('Liberty\Category');
     }
 
-    public function user(){
-        return $this->belongsTo('Liberty\User');
-    }
-
-    
 }

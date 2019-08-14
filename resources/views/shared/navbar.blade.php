@@ -36,7 +36,7 @@
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
-                    <ul class="dropdown-toggle" data-toggle="dropdown" role="menu">
+                    <ul  data-toggle="dropdown" role="menu">
                         <li><a href="/perfilUsuario/{{ Auth::user()->id }}">Perfil Usuario</a></li>
 
                         <li>

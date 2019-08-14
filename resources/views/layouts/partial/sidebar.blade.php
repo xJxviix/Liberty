@@ -8,38 +8,43 @@
     
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item active  ">
-            <a class="nav-link" href="/administrar">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
-            </li>
 
-            <li class="nav-item ">
-                <a class="nav-link" href="/administrador/usuarios">
-                <i class="material-icons">person</i>
-                <p>Usuarios</p>
+            <li class="{{ Request::is('layouts/app*') ? 'active': '' }}">
+                <a href="{{ route('administrar') }}">
+                    <i class="material-icons">dashboard</i>
+                    <p>Dashboard</p>
                 </a>
             </li>
 
-            <li class="nav-item ">
-                <a class="nav-link" href="/administrador/categorias">
-                <i class="material-icons">content_paste</i>
-                <p>Categorias</p>
+            
+            <li class="{{ Request::is('layouts/app*') ? 'active': '' }}">
+                <a href="{{ route('mostrarUsuario') }}">
+                    <i class="material-icons">person</i>
+                    <p>Usuarios</p>
                 </a>
             </li>
+
+            <li class="{{ Request::is('layouts/app*') ? 'active': '' }}">
+                <a href="{{ route('mostrarCategoria') }}">
+                    <i class="material-icons">dashboard</i>
+                    <p>Categorias</p>
+                </a>
+            </li>
+
+            <li class="{{ Request::is('layouts/app*') ? 'active': '' }}">
+                <a href="/administrador/productos">
+                    <i class="material-icons">dashboard</i>
+                    <p>Productos</p>
+                </a>
+            </li>
+
             <li class="nav-item ">
                 <a class="nav-link" href="#">
                 <i class="material-icons">content_paste</i>
                 <p>Actividades</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="#">
-                <i class="material-icons">content_paste</i>
-                <p>Productos</p>
-                </a>
-            </li>
+
             <li class="nav-item ">
                 <a class="nav-link" href="/administrador/reservas">
                 <i class="material-icons">content_paste</i>

@@ -2,7 +2,8 @@
 
 namespace Liberty\Http\Controllers;
 use Liberty\Product;
-
+use Liberty\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,9 +20,9 @@ class ProductController extends Controller
   
     }
 
-    protected function adminIndex(){
-
-        $products = Product::orderBy('id', 'ASC')->paginate(3);
+    protected function adminIndex()
+    {
+        $products = Product::all();
         return view('administrador.productos')->with('products', $products);
     }
 
@@ -32,7 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('productos.create',compact('categories'));
     }
 
     /**
@@ -45,34 +47,33 @@ class ProductController extends Controller
     {
         $this->validate($request,[
             'nombre' => 'required',
-            'imagen' => 'required',
-            'descripcion' => 'required'
+            'descripcion' => 'required',
+            'precio' => 'required',
+            'category_id' => 'required',
+            'image' => 'required|mimes:jpeg,jpg,bmp,png',
         ]);
+        $image = $request->file('image');
+        $slug = str_slug($request->name);
+        if (isset($image))
+        {
+            $currentDate = Carbon::now()->toDateString();
+            $auximage= $slug.'-'.$currentDate.'-'. uniqid() .'.'. $image->getClientOriginalExtension();
 
-        if($file = $request->hasFile('imagen')) {
-
-            $file = $request->file('imagen') ;
-
-            $fileName = $file->getClientOriginalName() ;
-            $destinationPath = public_path().'/image/' ;
-            $file->move($destinationPath,$fileName);
-
-            $product = new Product();
-            $product->nombre = $request->nombre;
-            $product->precio = $request->precio;
-            $product->nombreImagen = $fileName;
-            $product->descripcion = $request->descripcion;
-            $product->user_id = \Auth::user()->id;
-            $product->save();
-            $product->category_id = \Auth::category()->id;
-            $product->save();
-
-            $request->session()->flash('successStoreProduct', 'El producto se ha guardado satisfactoriamente');
-            return redirect()->back();
-        } else {
-            $request->session()->flash('errorStoredProduct', 'No se ha podido guardar la instalacion');
-            return redirect()->back();
+            if (!file_exists('uploads/item'))
+            {
+                mkdir('uploads/item',0777,true);
+            }
+            $image->move('uploads/item',$auximage);
+        }else{
+            $auximage = "default.png";
         }
+        $product = new Product();
+        $product->nombre = $request->nombre;
+        $product->descripcion = $request->descripcion;
+        $product->precio = $request->precio;
+        $product->image = $auximage;
+        $product->category_id = $request->category_id;
+        $product->save();
 
     }
 
@@ -95,7 +96,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product=Product::find($id);
+        $categories = Category::all();
+        return view('productos.edit',compact('item','categories'));
     }
 
     /**
@@ -118,6 +121,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        if (file_exists('uploads/item/'.$product->image))
+        {
+            unlink('uploads/item/'.$product->image);
+        }
+        $product->delete();
+        return redirect()->back()->with('successMsg','Se ha eliminado el producto correctamente');
     }
 }

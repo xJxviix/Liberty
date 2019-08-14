@@ -1,107 +1,67 @@
-@extends('layouts.admin')
-@section('title', 'Administración de Productos')
+@extends('layouts.app')
+
+@section('title','Productos')
+
+@push('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+@endpush
+
 @section('content')
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{ route('AñadirProducto') }}" class="btn btn-primary">Añadir Producto</a>
+                    @include('layouts.partial.msg')
+                    <div class="card">
+                        <div class="card-header" data-background-color="purple">
+                            <h4 class="title">Productos</h4>
+                        </div>
+                        <div class="card-content table-responsive">
+                            <table id="table" class="table"  cellspacing="0" width="100%">
+                                <thead class="text-primary">
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Imagen</th>
+                                <th>Categoria</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>Acción</th>
+                                </thead>
+                                <tbody>
+                                    @foreach($products as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->nombre }}</td>
+                                            <td><img class="img-responsive img-thumbnail" src="{{ asset('uploads/item/'.$item->image) }}" style="height: 100px; width: 100px" alt=""></td>
+                                            <td>{{ $item->category->name }}</td>
+                                            <td>{{ $item->descripcion }}</td>
+                                            <td>{{ $item->precio }}</td>
+                                            <td>
+                                            <a href="{{ route('editarProducto', $item->id) }}" method="GET" target="_parent" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a>
 
-<div class="panel panel-default">
-  <div class="panel-heading"><h3 class="panel-title"><strong>Admin Productos</strong></h3>
-      <br/>
-    @if (session('successStoreProduct'))
-        <div class="alert alert-success" role="alert">
-            {{session('successStoreProduct')}}
+                                                <a id="delete-form-{{ $item->id }}" href="{{route('eliminarProducto',$item->id)}}" class="btn btn-danger btn-sm" target="_parent" 
+                                                onclick="return confirm('¿Estas seguro que quieres eliminar el producto?')"><i class="material-icons">delete</i></a>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    @endif
-    @if (session('errorStoredProduct'))
-        <div class="alert alert-error" role="alert">
-            {{session('errorStoredProduct')}}
-        </div>
-    @endif
-      <table class="table table-bordered">
-      <thread>
-          <th>ID</th>
-          <th>Nombre Producto</th>
-          <th>Precio</th>
-          <th>Imagen</th>
-          <th>Descripción</th>
-          <th>Acción</th>
-      </thread>
-      <tbody>
-            <form method="POST" action="{{ route('crearProducto') }}" enctype="multipart/form-data">
-                    @csrf
-                        <tr>
-                            <td></td>
-                            <td>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <input id="nombre" type="text" class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" name="nombre" value="{{ old('nombre') }}" required autofocus>
-
-                                        @if ($errors->has('nombre'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('nombre') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group row">
-                                        <div class="col-md-12">
-                                            <input id="precio" type="text" class="form-control{{ $errors->has('precio') ? ' is-invalid' : '' }}" name="precio" value="{{ old('precio') }}">
-
-                                            @if ($errors->has('precio'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('precio') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <input id="imagen" type="file" class="form-control{{ $errors->has('imagen') ? ' is-invalid' : '' }}" name="imagen" value="{{ old('imagen') }}" required autofocus>
-                                        @if ($errors->has('imagen'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('imagen') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <input id="descripcion" type="text" class="form-control{{ $errors->has('descripcion') ? ' is-invalid' : '' }}" name="descripcion" value="{{ old('descripcion') }}" required autofocus>
-
-                                        @if ($errors->has('descripcion'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('descripcion') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <button  type="submit" class="btn btn-success"><span class="glyphicon glyphicon glyphicon-save" area-hiden="true"></span></button>
-                            </td>
-                        </tr>
-                    </form>
-          @foreach($products as $p)
-              <tr>
-                  <td>{{ $p->id }}</td>
-                  <td>{{ $p->nombre }}</td>
-                  <td>{{ $p->precio}}</td>
-                  <td>{{ $p->nombreImagen}}</td>
-                  <td>{{ $p->descripcion}} </td>
-                  <td>
-                      <a href="#" method="GET" target="_parent" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" area-hiden="true"></span></a>
-                    <a href="#" target="_parent" onclick="return confirm('Estas seguro ?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" area-hiden="true"></span></a>
-                    </td>
-              </tr>
-          @endforeach
-      </tbody>
-  </table>
-  {!! $products->render() !!}
-  </div>
-</div>
-
+    </div>
 @endsection
+
+@push('scripts')
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable();
+        } );
+    </script>
+@endpush

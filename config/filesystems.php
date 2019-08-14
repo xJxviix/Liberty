@@ -42,20 +42,7 @@ return [
     */
 
     'disks' => [
-
-        'Imgs' => [
-            'driver' => 'local',
-            'root' => public_path('imgs'),
-        ],
-        'Imgs_seeds' => [
-            'driver' => 'local',
-            'root' => public_path('imgs/seeds'),
-        ],
-        'files' => [
-            'driver' => 'local',
-            'root' => public_path('files'),
-        ],
-
+        
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

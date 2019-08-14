@@ -5,6 +5,7 @@ namespace Liberty;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Liberty\Reservation;
 
 class User extends Authenticatable
 {
@@ -36,5 +37,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function reservations(){
+        return $this->hasMany('Liberty\Reservation');
+    }
 }
 

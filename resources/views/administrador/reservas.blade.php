@@ -7,6 +7,7 @@
 @endpush
 
 @section('content')
+
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -30,7 +31,7 @@
                                 <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    @foreach($reservation as $key=>$res)
+                                    @foreach($reservation as $res)
                                         <tr>
                                             <td>{{ $res->id }}</td>
                                             <td>{{ $res->name }}</td>

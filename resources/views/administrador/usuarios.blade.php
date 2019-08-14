@@ -20,12 +20,12 @@
                             <div class="card-content table-responsive">
                                 <table id="table" class="table" cellspacing="0" width="100%">
                                     <thead class="text-primary">
-                                      <th>ID</th>
-                                      <th>Nombre</th>
-                                      <th>Apellidos</th>
-                                      <th>Tipo</th>
-                                      <th>Email</th>
-                                      <th>Acción</th>
+                                      <th><strong>ID</strong></th>
+                                      <th><strong>Nombre</strong></th>
+                                      <th><strong>Apellidos</strong></th>
+                                      <th><strong>Tipo</strong></th>
+                                      <th><strong>Email</strong></th>
+                                      <th><strong>Acción</strong></th>
                                     </thead>
 
                                     <tbody>

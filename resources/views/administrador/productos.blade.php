@@ -20,27 +20,27 @@
                         <div class="card-content table-responsive">
                             <table id="table" class="table"  cellspacing="0" width="100%">
                                 <thead class="text-primary">
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Imagen</th>
-                                <th>Categoria</th>
-                                <th>Descripción</th>
-                                <th>Precio</th>
-                                <th>Acción</th>
+                                <th><strong>ID</strong></th>
+                                <th><strong>Nombre</strong></strong></th>
+                                <th><strong>Imagen</strong></th>
+                                <th><strong>Categoria</strong></th>
+                                <th><strong>Descripción</strong></th>
+                                <th><strong>Precio</strong></th>
+                                <th><strong>Acción</strong></th>
                                 </thead>
                                 <tbody>
-                                    @foreach($products as $item)
+                                    @foreach($products as $pro)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ $item->nombre }}</td>
-                                            <td><img class="img-responsive img-thumbnail" src="{{ asset('uploads/item/'.$item->image) }}" style="height: 100px; width: 100px" alt=""></td>
-                                            <td>{{ $item->category->name }}</td>
-                                            <td>{{ $item->descripcion }}</td>
-                                            <td>{{ $item->precio }}</td>
+                                            <td>{{ $pro->id }}</td>
+                                            <td><strong>{{ $pro->nombre }}</strong></td>
+                                            <td><img class="img-responsive img-thumbnail" src="{{ asset('uploads/item/'.$pro->image) }}" style="height: 100px; width: 100px" alt=""></td>
+                                            <td>{{ $pro->category->name }}</td>
+                                            <td>{{ $pro->descripcion }}</td>
+                                            <td><strong>{{ $pro->precio }} €</strong></td>
                                             <td>
-                                            <a href="{{ route('editarProducto', $item->id) }}" method="GET" target="_parent" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a>
+                                            <a href="{{ route('editarProducto', $pro->id) }}" method="GET" target="_parent" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a>
 
-                                                <a id="delete-form-{{ $item->id }}" href="{{route('eliminarProducto',$item->id)}}" class="btn btn-danger btn-sm" target="_parent" 
+                                                <a id="delete-form-{{ $pro->id }}" href="{{route('eliminarProducto',$pro->id)}}" class="btn btn-danger btn-sm" target="_parent" 
                                                 onclick="return confirm('¿Estas seguro que quieres eliminar el producto?')"><i class="material-icons">delete</i></a>
                                                 </a>
                                             </td>

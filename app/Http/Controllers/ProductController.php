@@ -74,6 +74,7 @@ class ProductController extends Controller
         $product->image = $auximage;
         $product->category_id = $request->category_id;
         $product->save();
+        return redirect()->back()->with('successMsg','El producto se ha añadido correctamente');
 
     }
 
@@ -127,6 +128,6 @@ class ProductController extends Controller
             unlink('uploads/item/'.$product->image);
         }
         $product->delete();
-        return redirect()->back()->with('successMsg','Se ha eliminado el producto correctamente');
+        return redirect()->back()->with('successMsg','El Producto se ha eliminado correctamente');
     }
 }

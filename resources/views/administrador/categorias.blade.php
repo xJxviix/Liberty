@@ -21,16 +21,16 @@
                         <div class="card-content table-responsive">
                             <table id="table" class="table" cellspacing="0" width="100%">
                                 <thead class="text-primary">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Action</th>
+                                <th><strong>ID</strong></th>
+                                <th><strong>Name</strong></th>
+                                <th><strong>Action</strong></th>
                                 </thead>
 
                                 <tbody>
-                                    @foreach($categories as $key=>$cat)
+                                    @foreach($categories as $cat)
                                         <tr>
-                                            <td>{{ $cat->id}}</td>
-                                            <td>{{ $cat->name }}</td>
+                                            <td><strong>{{ $cat->id}}</strong></td>
+                                            <td><strong>{{ $cat->name }}</strong></td>
                                             <td>
                                                 <a href="{{ route('editarCategoria', $cat->id) }}" method="GET" target="_parent" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a>
 

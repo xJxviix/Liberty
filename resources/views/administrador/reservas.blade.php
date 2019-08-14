@@ -20,15 +20,15 @@
                         <div class="card-content table-responsive">
                             <table id="table" class="table"  cellspacing="0" width="100%">
                                 <thead class="text-primary">
-                                <th>ID</th>
-                                <th>Nombre Reserva</th>
-                                <th>Teléfono</th>
-                                <th>Email</th>
-                                <th>Time and Date</th>
-                                <th>Nº Personas</th>
-                                <th>Message</th>
-                                <th>Estado</th>
-                                <th>Action</th>
+                                <th><strong>ID</strong></th>
+                                <th><strong>Nombre Reserva</strong></th>
+                                <th><strong>Teléfono</strong></th>
+                                <th><strong>Email</strong></th>
+                                <th><strong>Time and Date</strong></th>
+                                <th><strong>Nº Personas</strong></th>
+                                <th><strong>Mensaje</strong></th>
+                                <th><strong>Estado</strong></th>
+                                <th><strong>Action</strong></th>
                                 </thead>
                                 <tbody>
                                     @foreach($reservation as $res)
@@ -66,7 +66,7 @@
                                                             }"><i class="material-icons">done</i></button>
                                                 @endif
                                                 <a id="delete-form-{{ $res->id }}" href="{{route('eliminarReserva',$res->id)}}" class="btn btn-danger btn-sm" target="_parent" 
-                                                onclick="return confirm('¿Estas seguro que quieres eliminar la categoria?')"><i class="material-icons">delete</i></a>
+                                                onclick="return confirm('¿Estas seguro que quieres eliminar la reserva?')"><i class="material-icons">delete</i></a>
                                                 </a>
                                             </td>
                                         </tr>

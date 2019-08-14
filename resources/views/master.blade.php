@@ -54,11 +54,12 @@
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 
+    <title>
+        @yield('title')
+    </title>
 
-
-    <title>@yield('title')</title>
     <script src="{{ asset('frontend/js/jquery-1.11.2.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/js/jquery.flexslider.min.js') }}"></script>
     <script type="text/javascript">

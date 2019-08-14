@@ -31,12 +31,31 @@
                 <li><a href="{{ route('register') }}">Register</a></li>
             @else
 
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ Auth::user()->name }} 
+                </button>
+                <div class="dropdown-menu">
+                    <a href="/perfilUsuario/{{ Auth::user()->id }}">Perfil Usuario</a>
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+    
+                </div>
+            </div>
+
                 <li class="inner-ul">
                     <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
-                    <ul  data-toggle="dropdown" role="menu">
+                    <ul  data-toggle="checkbox" role="menu">
                         <li><a href="/perfilUsuario/{{ Auth::user()->id }}">Perfil Usuario</a></li>
 
                         <li>

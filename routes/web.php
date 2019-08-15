@@ -15,8 +15,14 @@ Route::get('/', function () {
     return view('bienvenida');
 });
 
+
+/**
+ * Productos
+ */
+Route::get('/productos', 'ProductController@index')->name('productoss');
+
 Auth::routes();
-Route::get('/welcome', 'HomeController@index')->name('welcome');
+//Route::get('/', 'HomeController@index')->name('welcome');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -34,10 +40,6 @@ Route::get('/perfilUsuario/{id}', 'UserController@editUser')->middleware('auth')
 Route::post('/perfilUsuario/{id}', 'UserController@updateUser')->middleware('auth');
 
 
-/**
- * Productos
- */
-Route::get('/productos', 'ProductController@index');
 
 /**
  * Reservar Mesa 

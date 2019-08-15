@@ -1,4 +1,4 @@
-@extends('master')
+@extends('master2')
 @section('title','Registrarse')
 @section('content')
 <br>

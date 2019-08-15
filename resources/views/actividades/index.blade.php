@@ -1,4 +1,4 @@
-@extends('master')
+@extends('master2')
 @section('title','Actividades')
 @section('content')
 <br>

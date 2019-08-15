@@ -304,3 +304,49 @@
                     <li><a href="#menu" class="scroll">Menu</a></li>
                 </ul>
             </li>
+
+
+    
+            @extends('master')
+
+@section('title','Productos')
+
+@section('content')
+
+    <section class="mid-sec py-5" id="menu">
+        <div class="container-fluid py-lg-5">
+            <div class="header pb-lg-3 pb-3 text-center">
+                <h3 class="tittle mb-lg-3 mb-3">Liberty - CARTA</h3>
+            </div>
+
+            <div class="middile-inner-con">
+                <div class="tab-main mx-auto text-center">
+                    
+                    @foreach($categories as $category)
+                        <input id="#{{ $category->slug }}" type="radio" name="#{{ $category->slug }}">
+                        <label class="filter" data-filter="#{{ $category->slug }}" for="tab1"><span class="fa fa-align-center" aria-hidden="true">
+                            </span>{{ $category->name }} <span class="badge">{{ $category->products->count() }}</span></label>
+                    @endforeach
+
+                    @foreach($product as $item)
+                        <section>
+                            <div class="ab-info row">
+                                <div class="col-md-3 ab-content">
+                                    <div class="tab-wrap">
+                                        <img src="{{ asset('uploads/item/'.$item->image) }}" class="img-fluid" style="height: 200px; width: 200px;">
+                                        <div class="ab-info-con">
+                                            <h4>{{ $item->nombre }}</h4>
+                                            <p class="price">{{ $item->descripcion }}</p>
+                                            <p class="price">{{ $item->precio }} €</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+
+@endsection

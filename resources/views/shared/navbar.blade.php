@@ -10,7 +10,7 @@
     
         <ul class="menu mt-2 ml-auto">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="/productos" class="scroll">Productos</a></li>
+            <li><a href="{{ route('productoss') }}"" class="scroll">Productos</a></li>
             <li><a href="/actividades" class="scroll">Actividades</a></li>
             <li class="nav-item"><a class="nav-link" href="/reserva">Reservar Mesa</a></li>
 
@@ -30,25 +30,6 @@
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('register') }}">Register</a></li>
             @else
-
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ Auth::user()->name }} 
-                </button>
-                <div class="dropdown-menu">
-                    <a href="/perfilUsuario/{{ Auth::user()->id }}">Perfil Usuario</a>
-                    <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                                Logout
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-    
-                </div>
-            </div>
 
                 <li class="inner-ul">
                     <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-expanded="true">

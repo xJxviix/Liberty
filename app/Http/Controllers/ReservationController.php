@@ -1,6 +1,7 @@
 <?php
 namespace Liberty\Http\Controllers;
 use Liberty\Reservation;
+use Liberty\User;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use Liberty\Http\Controllers\Controller;
@@ -15,7 +16,9 @@ class ReservationController extends Controller
     public function index()
     {
         //$reservations = Reservation::all();  , ['reservations' => $reservations]
-        return view('reservas.reserva');
+
+        $users = User::all();
+        return view('reservas.reserva', compact('users'));
     }
 
     protected function adminIndex(){
@@ -25,22 +28,26 @@ class ReservationController extends Controller
     }
     public function reserve(Request $request)
     {
-            $this->validate($request,[
-                'name' => 'required',
-                'phone' => 'required',
-                'email' => 'required|email',
-                'dateandtime' => 'required'
-            ]);
-            $reservation = new Reservation();
-            $reservation->name = $request->name;
-            $reservation->phone = $request->phone;
-            $reservation->email = $request->email;
-            $reservation->date_and_time = $request->dateandtime;
-            $reservation->message = $request->message;
-            $reservation->status = false;
-            $reservation->save();
-            Toastr::success('Reservation request sent successfully. we will confirm to you shortly','Success',["positionClass" => "toast-top-right"]);
-            return redirect()->back();
+        $this->validate($request,[
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'dateandtime' => 'required',
+            'num' => 'required|integer|min:4|max:14'
+        ]);
+        
+        $reservation = new Reservation();
+        $reservation->name = $request->name;
+        $reservation->phone = $request->phone;
+        $reservation->email = $request->email;
+        $reservation->date_and_time = $request->dateandtime;
+        $reservation->num = $request->num;
+        $reservation->message = $request->message;
+        $reservation->status = false;
+        $reservation->save();
+        Toastr::success('Su solicitud de reserva ha sido enviada con éxito. Le confirmaremos con la menor brevedad','Success',["positionClass" => "toast-top-right"]);
+           
+        return redirect()->back();
     }
 
     public function status($id){
@@ -64,7 +71,7 @@ class ReservationController extends Controller
             'phone' => 'required',
             'email' => 'required|email',
             'dateandtime' => 'required',
-            'num' => 'required'
+            'num' => 'required|integer|min:4|max:14'
         ]);
         $reservation = new Reservation();
         $reservation->name = $request->name;
@@ -75,7 +82,7 @@ class ReservationController extends Controller
         $reservation->message = $request->message;
         $reservation->status = false;
         $reservation->save();
-         Toastr::success('Su solicitud de reserva ha sido enviada con éxito. Le confirmaremos con la menor brevedad','Success',["positionClass" => "toast-top-right"]);
+        Toastr::success('Su solicitud de reserva ha sido enviada con éxito. Le confirmaremos con la menor brevedad','Success',["positionClass" => "toast-top-right"]);
            
         return redirect()->back();
     }
@@ -84,6 +91,6 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::find($id);
         $reservation->delete();
-        return redirect()->back()->with('successMsg','Se ha eliminado la categoria correctamente');
+        return redirect()->back()->with('successMsg','Se ha eliminado la reserva correctamente');
     }
 }

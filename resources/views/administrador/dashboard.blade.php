@@ -10,20 +10,59 @@
     <div class="content">
         <div class="container-fluid">
         <div class="row">
+
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-stats">
                         <div class="card-header" data-background-color="orange">
-                            <i class="material-icons">content_copy</i>
+                            <i class="material-icons">category</i>
                         </div>
                         <div class="card-content">
-                            <p class="category">Category</p>
+                            <p class="category">Categorias</p>
+                            <h3 class="title">{{ $categoryCount }}
+                            </h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons text-danger">category</i>
+                                <a href="#pablo">Total Categorías</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="orange">
+                            <i class="material-icons">fastfood</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">Productos</p>
+                            <h3 class="title">{{ $itemCount }}
+                            </h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons text-danger">fastfood</i>
+                                <a href="#pablo">Total Productos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header" data-background-color="orange">
+                            <i class="material-icons">local_activity</i>
+                        </div>
+                        <div class="card-content">
+                            <p class="category">Actividades</p>
                             <h3 class="title">
                             </h3>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons text-danger">info</i>
-                                <a href="#pablo">Total Categories and Items</a>
+                                <i class="material-icons text-danger">local_activity</i>
+                                <a href="#pablo">Total Actividades</a>
                             </div>
                         </div>
                     </div>
@@ -35,12 +74,12 @@
                             <i class="material-icons">info_outline</i>
                         </div>
                         <div class="card-content">
-                            <p class="category">Reservation</p>
-                            <h3 class="title"></h3>
+                            <p class="category">Reservas</p>
+                            <h3 class="title">{{ $reservations->count() }}</h3>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
-                                <i class="material-icons">local_offer</i> Not Confirmed Reservation
+                                <i class="material-icons">local_offer</i> Reservas No Confirmadas
                             </div>
                         </div>
                     </div>
@@ -58,46 +97,57 @@
                         <div class="card-content table-responsive">
                             <table id="table" class="table"  cellspacing="0" width="100%">
                                 <thead class="text-primary">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Status</th>
-                                <th>Action</th>
+
+                                    <th><strong>ID</strong></th>
+                                    <th><strong>Nombre Reserva</strong></th>
+                                    <th><strong>Teléfono</strong></th>
+                                    <th><strong>Time and Date</strong></th>
+                                    <th><strong>Nº Personas</strong></th>
+                                    <th><strong>Estado</strong></th>
+                                    <th><strong>Acción</strong></th>
                                 </thead>
+
                                 <tbody>
+                                @foreach($reservations as $res)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $res->id }}</td>
+                                        <td>{{ $res->name }}</td>
+                                        <td>{{ $res->phone }}</td>
+                                        <td>{{ $res->date_and_time }}</td>
+                                        <td>{{ $res->num }}</td>
                                         <th>
+                                            @if($res->status == true)
                                                 <span class="label label-info">Confirmed</span>
-                                            
+                                            @else
                                                 <span class="label label-danger">not Confirmed yet</span>
-                                            
+                                            @endif
+
                                         </th>
                                         <td>
-                                                <form id="" action="" style="display: none;" method="POST">
+                                            @if($res->status == false)
+                                                <form id="status-form-{{ $res->id }}" action="{{route('confirmarReserva',$res->id)}}" style="display: none;" method="POST">
                                                     @csrf
                                                 </form>
-                                                <button type="button" class="btn btn-info btn-sm" onclick="if(confirm('Are you verify this request by phone?')){
+                                                <button type="button" class="btn btn-info btn-sm" onclick="if(confirm()){
                                                         event.preventDefault();
+                                                        document.getElementById('status-form-{{ $res->id }}').submit();
                                                         }else {
                                                         event.preventDefault();
                                                         }"><i class="material-icons">done</i></button>
-                                           
-                                            <form id="" action="" style="display: none;" method="POST">
+                                            @endif
+                                            <form id="delete-form-{{ $res->id }}" action="{{ route('eliminarReserva',$res->id) }}" style="display: none;" method="get">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
                                             <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure? You want to delete this?')){
                                                     event.preventDefault();
-                                                 
+                                                    document.getElementById('delete-form-{{ $res->id }}').submit();
                                                     }else {
                                                     event.preventDefault();
                                                     }"><i class="material-icons">delete</i></button>
                                         </td>
                                     </tr>
-                
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

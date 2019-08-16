@@ -27,32 +27,9 @@
             
             <!-- Authentication Links -->
             @if (Auth::guest())
-                <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('register') }}">Register</a></li>
-            @else
-
-                <li class="inner-ul">
-                    <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-expanded="true">
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-
-                    <ul  data-toggle="checkbox" role="menu">
-                        <li><a href="/perfilUsuario/{{ Auth::user()->id }}">Perfil Usuario</a></li>
-
-                        <li>
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                        Logout
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
-
-                </li>
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @else
 
                 @auth
                     @if(Auth::user()->tipo == 'administrador')
@@ -61,7 +38,20 @@
                         </li>
                     @endif
                 @endauth
-            @endif
+                <li><a href="/perfilUsuario/{{ Auth::user()->id }}" class="scroll"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }} </a></li>
+
+                <li>
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+                
+                @endif
         </ul>
 
     </nav>

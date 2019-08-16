@@ -51,9 +51,9 @@ class ActivityController extends Controller
         //
     }
 
-    public function listarActividadesAdmin() {
-        $activities = Activity::orderBy('id', 'ASC')->paginate(5);
-
+    public function listarActividadesAdmin() 
+    {
+        $activities = Activity::all();
         return view('administrador.actividades', ['activities'=> $activities]);
     }
 

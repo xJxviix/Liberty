@@ -15,11 +15,12 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid py-lg-5">
 
         <div class="middile-inner-con">
             <div class="tab-main mx-auto text-center">
-                
+
                 @foreach($categories as $category)
                     <input id="#{{ $category->slug }}" type="radio" name="#{{ $category->slug }}">
                     <label class="filter" data-filter="#{{ $category->slug }}" for="tab1"><span class="fa fa-align-center" aria-hidden="true">
@@ -46,11 +47,6 @@
                                     </li>
                                 @endforeach
                             </ul>
-
-                            <!-- <div class="text-center">
-                                    <a id="loadPricingContent" class="btn btn-middle hidden-sm hidden-xs">Load More <span class="caret"></span></a>
-                            </div> -->
-
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('master2')
 @section('title', 'Administracion de Actividades')
 @section('content')
 
@@ -118,7 +118,6 @@
           @endforeach
       </tbody>
   </table>
-  {!! $activities->render() !!}
 </div>
 </div>
 

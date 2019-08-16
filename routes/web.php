@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
+use Liberty\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,13 +14,21 @@
 |
 */
 
+/*
+* WELCOME
+*/
 Route::get('/', function () {
     return view('bienvenida');
 });
 
+/*
+* Contactanos - OK
+*/
+Route::get('/contactanos', 'ContactMailController@index');
+Route::post('/contactanos', 'ContactMailController@create');
 
 /**
- * Productos
+ * Productos - OK
  */
 Route::get('/productos', 'ProductController@index')->name('productoss');
 
@@ -34,26 +45,16 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 /*
-Perfil Usuario - Registrado
+Perfil Usuario - Registrado - OK
 */
 Route::get('/perfilUsuario/{id}', 'UserController@editUser')->middleware('auth');
 Route::post('/perfilUsuario/{id}', 'UserController@updateUser')->middleware('auth');
-
-
 
 /**
  * Reservar Mesa 
  */
 Route::get('/reserva', 'ReservationController@index');
 Route::post('/crearReserva', 'ReservationController@store')->name('crearReserva');
-
-/**
- * Contactanos
- */
-Route::get('/contactanos', function() {
-    return view('contactanos');
-});
-
 
 /**
  * Actividades
@@ -68,8 +69,8 @@ Route::post('/actividades/reservaActividad/{id}/{email}', 'InscriptionController
  *   Administrador  **
  *                  **/
 
-//Admin Center
-Route::get('/administrador', 'UserController@administrar')->name('administrar')->middleware('auth');
+//Admin Dashboard
+Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 Route::get('/administrar', 'UserController@dashboard')->name('administrar')->middleware('auth');
 
 // Mostrar Listado
@@ -122,7 +123,6 @@ Route::get('reservations/{id}/destroy',
     'uses' => 'ReservationController@destroy',
     'as' => 'eliminarReserva'
 ])->middleware('auth');
-
 
 // CRUD ACTIVIDAD - EMPEZAR ADAPTAR A LA VISTA DEL ADMIN CENTER
 Route::get('/administrador_editActivity/{id}', 'ActivityController@edit')->name('editarActividad')->middleware('auth');

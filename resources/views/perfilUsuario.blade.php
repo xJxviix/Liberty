@@ -1,4 +1,4 @@
-@extends('master')
+@extends('master2')
 @section('title','Perfil Usuario')
 @section('content')
 <br>

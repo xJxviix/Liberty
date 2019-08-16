@@ -5,66 +5,71 @@
 @section('content')
 
 <section id="reserve" class="reserve">
-
     <p><center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcQwgs4bcA0X2jJDpt56tj52UdUFGcgtZSrR9hyCZINvGcop2_"></center></p>
-        <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row dis-table">
-                <div class="col-xs-6 col-sm-6 dis-table-cell color-bg">
-                    <h2 class="section-title"></h2>
-                </div>
-                <div class="col-xs-6 col-sm-6 dis-table-cell section-bg">
-
-                </div>
-            </div> <!-- /.dis-table -->
-        </div> <!-- /.row -->
-    </div> <!-- /.wrapper -->
-</section> <!-- /#reserve -->
 
     @auth
-        @if(Auth::user()->tipo == 'registrado')
+        @if(Auth::user()->tipo == 'administrador' or 'empleado' or 'registrado')
         <section class="reservation">
 
-        <img class="img-responsive section-icon hidden-sm hidden-xs" src="">
+
+        <img class="img-responsive section-icon hidden-sm hidden-xs">
         <div class="wrapper">
             <div class="container-fluid">
                 <div class=" section-content">
                     <div class="row">
                         <div class="col-md-5 col-sm-6">
-                            <form class="reservation-form" method="POST" action="{{ route('crearReserva') }}">
+                            <form class="contact-form" method="POST" action="{{ route('crearReserva') }}">
                                 @csrf
                                 <div class="row">
+                                    
                                     <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control reserve-form empty iconified" name="name" id="name"
-                                                placeholder="  &#xf007;  Nombre">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" name="email" class="form-control reserve-form empty iconified" id="email"  placeholder="  &#xf1d8;  Email">
-                                        </div>
-                                    </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 con-gd">
+                                                
+                                                <div class="form-group">
+                                                    <label>Nombre *</label>
+                                                    <input type="text" class="form-control reserve-form empty iconified" id="name" placeholder="" name="name" required="">
+                                                </div>
+                                                
+                                            </div>
+                                           
+                                            <div class="col-lg-12 con-gd">
+                                                <div class="form-group">
+                                                    <label>Email *</label>
+                                                    <input type="email" class="form-control reserve-form empty iconified" id="email" placeholder="" name="email" required="">
+                                                </div>
+                                            </div>
+                                        </div> 
 
+                                    </div>
+   
                                     <div class="col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone"  placeholder="  &#xf095;  Teléfono">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control reserve-form empty iconified" name="dateandtime" id="datetimepicker1" placeholder="&#xf017;  Time">
-                                        </div>
-                                    </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 con-gd">
+                                                <div class="form-group">
+                                                    <label>Teléfono *</label>
+                                                    <input type="tel" class="form-control reserve-form empty iconified" id="phone" placeholder="" name="phone" required="">
+                                                </div>
+                                            </div>
 
-
-                                    <div class="col-md-8 col-sm-8">
-                                        <div class="form-group">
-                                            <input type="num" class="form-control reserve-form empty iconified" name="num" id="num"  placeholder="  &#xf007;  Núm. Personas. min: 4 - max:15">
+                                            <div class="col-lg-12 con-gd">
+                                                <div class="form-group">
+                                                    <label>Fecha_Hora*</label>
+                                                    <input type="text" class="form-control reserve-form empty iconified" id="datetimepicker1" placeholder="" name="dateandtime" required="">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12 col-sm-12">
-                                        <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3"  placeholder="  &#xf086;  Comentarios"></textarea>
+                                        <div class="form-group">
+                                            <input type="num" class="form-control reserve-form empty iconified" name="num" id="num"  placeholder="  &#xf007;  Núm. Personas. min: 4 - max:15" required>
+                                        </div>
                                     </div>
 
-
+                                    <div class="col-md-12 col-sm-12">
+                                        <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3"  placeholder="  &#xf086;  Comentarios" required></textarea>
+                                    </div>
 
                                     <div class="col-md-12 col-sm-12">
                                         <button type="submit" id="submit" name="submit" class="btn btn-reservation">
@@ -108,12 +113,11 @@
             </div>
         </div>
         </section>
-
-        @endif
+    @endif
     @endauth
 
-    
-<section class="reservation">
+    @guest
+    <section class="reservation">
 
     <img class="img-responsive section-icon hidden-sm hidden-xs" src="">
     <div class="wrapper">
@@ -197,6 +201,8 @@
             </div>
         </div>
     </div>
+    @endguest
+ 
 </section>
 
 @endsection

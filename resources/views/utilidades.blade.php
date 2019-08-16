@@ -246,6 +246,7 @@
 
                 </form>
             </div>
+            
             <ul class="list-unstyled row text-left mb-lg-5 mb-3">
                 <li class="col-lg-4 adress-info">
                     <div class="row">
@@ -350,3 +351,52 @@
     </section>
 
 @endsection
+
+
+<div class="col-md-12">
+            <div class="col-md-3 text-lg-center adress-icon">
+                            <span class="fa fa-map-marker"></span>
+                        </div>
+                        <div class="col-md-9 text-left">
+                            <h6>Dirección</h6>
+                            <p>Av de Murcia, 11,
+                                <br>03503 Benidorm, Alicante </p>
+                        </div>
+                            <section id="map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.7544251699815!2d-0.12095318494634899!3d38.53942867557045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6204f0f0af2ae1%3A0x1585f292b7726f31!2sLiberty!5e0!3m2!1ses!2ses!4v1565890535320!5m2!1ses!2ses"
+                                     width="500" height="400" frameborder="0" style="border:ridge" allowfullscreen></iframe>
+                            </section> 
+                        </div>
+                                </div>
+
+
+
+
+        <ul class="menu mt-2 ml-right">
+                <!-- Authentication Links -->
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @else
+
+                @auth
+                    @if(Auth::user()->tipo == 'administrador')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('administrar')}}">Administrar <span class="sr-only">(current)</span></a>
+                        </li>
+                    @endif
+                @endauth
+                <li><a href="/perfilUsuario/{{ Auth::user()->id }}" class="scroll"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }} </a></li>
+
+                <li>
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+                @endif
+            </ul>

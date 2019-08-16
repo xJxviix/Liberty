@@ -1,11 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
 namespace Liberty\Http\Controllers;
+use Illuminate\Http\Request;
 use Liberty\User;
+use Liberty\Category;
+use Liberty\Product;
+use Liberty\Reservation;
 use Laracasts\Flash\FlashServiceProvider;
 use Liberty\Http\Requests\UserRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -21,11 +23,19 @@ class UserController extends Controller
     }
 
     public function administrar() {
-        return view('administrador.index');
+        $totalCategory = Category::count();
+        $totalProduct = Product::count();
+        $reservations = Reservation::where('status',false)->get();
+        $totalActivity = Activity::count();
+        return view('administrador.index',compact('totalCategory','totalProduct','reservations', 'totalActivity'));
     }
 
     public function dashboard() {
-        return view('administrador.dashboard');
+
+        $categoryCount = Category::count();
+        $itemCount = Product::count();
+        $reservations = Reservation::where('status',false)->get();
+        return view('administrador.dashboard',compact('categoryCount','itemCount','reservations'));
     }
 
     protected function adminIndex(){

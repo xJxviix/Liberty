@@ -9,6 +9,7 @@ use Liberty\Reservation;
 use Laracasts\Flash\FlashServiceProvider;
 use Liberty\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use Brian2694\Toastr\Facades\Toastr;
 
 class UserController extends Controller
 {
@@ -20,14 +21,6 @@ class UserController extends Controller
     public function index()
     {
         //
-    }
-
-    public function administrar() {
-        $totalCategory = Category::count();
-        $totalProduct = Product::count();
-        $reservations = Reservation::where('status',false)->get();
-        $totalActivity = Activity::count();
-        return view('administrador.index',compact('totalCategory','totalProduct','reservations', 'totalActivity'));
     }
 
     public function dashboard() {
@@ -80,7 +73,9 @@ class UserController extends Controller
 
         $user->photo = $img_route;
         $user->save();
-        return redirect()->back()->with('successMsg','Se ha creado el usuario correctamente');
+
+        Toastr::success('Se ha creado el usuario correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
     }
 
     /**
@@ -130,9 +125,10 @@ class UserController extends Controller
         if ($request->tipo != null) {
             $user->tipo = $request->tipo;
         }
-
         $user->save();
-        return redirect()->back()->with('successMsg','Se ha actualizado el usuario correctamente');
+
+        Toastr::success('Se ha actualizado el usuario correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
     }
 
     /**
@@ -145,7 +141,9 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->back()->with('successMsg','El usuario se ha eliminado correctamente');
+        Toastr::success('El usuario se ha eliminado correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
+
     }
 
     //--------------------------------------------
@@ -157,6 +155,9 @@ class UserController extends Controller
     {
         $users=User::find($id);  
         return view('perfilUsuario', ['users' => $users]);
+        Toastr::success('El usuario se ha actualizado correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
+
     }
 
     public function updateUser(Request $request, $id){
@@ -170,7 +171,8 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->lastname = $request->input('lastname');
         $user->save();                
-        return back();
+        Toastr::success('El usuario se ha actualizado correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
     }
 
 

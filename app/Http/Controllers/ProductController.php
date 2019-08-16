@@ -5,6 +5,7 @@ use Liberty\Product;
 use Liberty\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ProductController extends Controller
 {
@@ -75,7 +76,8 @@ class ProductController extends Controller
         $product->image = $auximage;
         $product->category_id = $request->category_id;
         $product->save();
-        return redirect()->back()->with('successMsg','El producto se ha añadido correctamente');
+        Toastr::success('El producto se ha añadido correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
 
     }
 
@@ -129,6 +131,8 @@ class ProductController extends Controller
             unlink('uploads/item/'.$product->image);
         }
         $product->delete();
-        return redirect()->back()->with('successMsg','El Producto se ha eliminado correctamente');
+        Toastr::success('El Producto se ha eliminado correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
+
     }
 }

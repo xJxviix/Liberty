@@ -15,7 +15,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //$reservations = Reservation::all();  , ['reservations' => $reservations]
+        //$reservation = Reservation::all();  , ['reservations' => $reservations]
 
         $users = User::all();
         return view('reservas.reserva', compact('users'));
@@ -45,8 +45,7 @@ class ReservationController extends Controller
         $reservation->message = $request->message;
         $reservation->status = false;
         $reservation->save();
-        Toastr::success('Su solicitud de reserva ha sido enviada con éxito. Le confirmaremos con la menor brevedad','Success',["positionClass" => "toast-top-right"]);
-           
+        Toastr::success('Su solicitud de reserva ha sido enviada con éxito. Le confirmaremos con la menor brevedad posible. Gracias','Success',["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 
@@ -54,7 +53,7 @@ class ReservationController extends Controller
         $reservation = Reservation::find($id);
         $reservation->status = true;
         $reservation->save();
-        Toastr::success('Reservation successfully confirmed.','Success',["positionClass" => "toast-top-right"]);
+        Toastr::success('Se ha realizado la confirmación de la reserva','Success',["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 
@@ -83,7 +82,7 @@ class ReservationController extends Controller
         $reservation->status = false;
         $reservation->save();
         Toastr::success('Su solicitud de reserva ha sido enviada con éxito. Le confirmaremos con la menor brevedad','Success',["positionClass" => "toast-top-right"]);
-           
+
         return redirect()->back();
     }
 
@@ -91,6 +90,7 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::find($id);
         $reservation->delete();
-        return redirect()->back()->with('successMsg','Se ha eliminado la reserva correctamente');
+        Toastr::success('Se ha eliminado la reserva correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->back();
     }
 }

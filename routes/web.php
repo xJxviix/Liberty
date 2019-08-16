@@ -53,7 +53,7 @@ Route::post('/perfilUsuario/{id}', 'UserController@updateUser')->middleware('aut
 /**
  * Reservar Mesa 
  */
-Route::get('/reserva', 'ReservationController@index');
+Route::get('/reserva', 'ReservationController@index')->middleware('auth');
 Route::post('/crearReserva', 'ReservationController@store')->name('crearReserva');
 
 /**
@@ -70,7 +70,6 @@ Route::post('/actividades/reservaActividad/{id}/{email}', 'InscriptionController
  *                  **/
 
 //Admin Dashboard
-Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 Route::get('/administrar', 'UserController@dashboard')->name('administrar')->middleware('auth');
 
 // Mostrar Listado

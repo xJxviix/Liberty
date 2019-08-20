@@ -20,7 +20,9 @@
             <div class="header pb-lg-3 pb-3 text-center">
                 <h3 class="tittle two mb-lg-3 mb-3">What kind of Foods we serve for you</h3>
             </div>
+
             <div class="row ab-info mt-lg-4">
+
                 <div class="col-lg-3 ab-content">
                     <div class="ab-content-inner">
                         <img src="images/1.jpg" alt="news image" class="img-fluid">
@@ -30,6 +32,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-3 ab-content">
                     <div class="ab-content-inner">
                         <img src="images/2.jpg" alt="news image" class="img-fluid">
@@ -39,6 +42,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-lg-3 ab-content">
                     <div class="ab-content-inner">
                         <img src="images/3.jpg" alt="news image" class="img-fluid">
@@ -400,3 +404,11 @@
                 </li>
                 @endif
             </ul>
+
+
+
+
+            @if( auth()->user() != null)
+                <li><a href="#about" class="scroll">Ofertas</a></li>
+            @endif
+            

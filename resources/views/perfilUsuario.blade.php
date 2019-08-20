@@ -109,4 +109,11 @@
 </div>
 <br>
 
+<p> Mostrar Reservas </p>
+
+@foreach($reservations as $res)
+    <p>{{ $res->name }}</p>
+    <p>{{ $res->status}}</p>
+@endforeach
+
 @endsection

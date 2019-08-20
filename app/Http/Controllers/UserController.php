@@ -6,10 +6,12 @@ use Liberty\User;
 use Liberty\Category;
 use Liberty\Product;
 use Liberty\Reservation;
+use Liberty\Activity;
 use Laracasts\Flash\FlashServiceProvider;
 use Liberty\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use Brian2694\Toastr\Facades\Toastr;
+use DB;
 
 class UserController extends Controller
 {
@@ -27,8 +29,9 @@ class UserController extends Controller
 
         $categoryCount = Category::count();
         $itemCount = Product::count();
+        $activitiesCount = Activity::count();
         $reservations = Reservation::where('status',false)->get();
-        return view('administrador.dashboard',compact('categoryCount','itemCount','reservations'));
+        return view('administrador.dashboard',compact('categoryCount','itemCount','reservations','activitiesCount'));
     }
 
     protected function adminIndex(){
@@ -154,9 +157,11 @@ class UserController extends Controller
     public function editUser($id)
     {
         $users=User::find($id);  
-        return view('perfilUsuario', ['users' => $users]);
-        Toastr::success('El usuario se ha actualizado correctamente','Success',["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+
+        //Mostrar reservas relacionada con el ID del usuario
+        $reservations = DB::table('reservations')->where('user_id', $id)->get();
+
+        return view('perfilUsuario', compact('users', 'reservations'));
 
     }
 

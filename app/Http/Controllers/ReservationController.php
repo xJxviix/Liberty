@@ -16,7 +16,6 @@ class ReservationController extends Controller
     public function index()
     {
         //$reservation = Reservation::all();  , ['reservations' => $reservations]
-
         $users = User::all();
         return view('reservas.reserva', compact('users'));
     }
@@ -26,26 +25,35 @@ class ReservationController extends Controller
         $reservation = Reservation::all();
         return view('administrador.reservas')->with('reservation', $reservation);
     }
-    public function reserve(Request $request)
+
+    /**
+     * Solicitar Reserva USUARIO REGISTRADO
+     */
+    public function userReservation(Request $request)
     {
         $this->validate($request,[
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
             'dateandtime' => 'required',
-            'num' => 'required|integer|min:4|max:14'
+            'num' => 'required|integer|min:4|max:14',
+            'message' => 'required',
         ]);
         
         $reservation = new Reservation();
-        $reservation->name = $request->name;
+        $reservation->user_id =\Auth::user()->id;
+        $reservation->name = \Auth::user()->name;
         $reservation->phone = $request->phone;
-        $reservation->email = $request->email;
+        $reservation->email = \Auth::user()->email;
         $reservation->date_and_time = $request->dateandtime;
         $reservation->num = $request->num;
         $reservation->message = $request->message;
         $reservation->status = false;
         $reservation->save();
+        //$request->session()->flash('activitySucces', 'Su solicitud de reserva ha sido enviada con éxito. Le confirmaremos con la menor brevedad');
+       
         Toastr::success('Su solicitud de reserva ha sido enviada con éxito. Le confirmaremos con la menor brevedad posible. Gracias','Success',["positionClass" => "toast-top-right"]);
+        
         return redirect()->back();
     }
 
@@ -58,7 +66,7 @@ class ReservationController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * CREAR RESERVA USUARIO SIN REGISTRAR.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -80,9 +88,10 @@ class ReservationController extends Controller
         $reservation->num = $request->num;
         $reservation->message = $request->message;
         $reservation->status = false;
+        $request->request->add(['user_id', '1']);
         $reservation->save();
         Toastr::success('Su solicitud de reserva ha sido enviada con éxito. Le confirmaremos con la menor brevedad','Success',["positionClass" => "toast-top-right"]);
-
+        //$request->session()->flash('activitySucces', 'Su solicitud de reserva ha sido enviada con éxito. Le confirmaremos con la menor brevedad');
         return redirect()->back();
     }
 

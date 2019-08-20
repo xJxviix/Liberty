@@ -4,31 +4,29 @@
 
 @section('content')
 
+
 <section id="reserve" class="reserve">
     <p><center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcQwgs4bcA0X2jJDpt56tj52UdUFGcgtZSrR9hyCZINvGcop2_"></center></p>
 
     @auth
-        @if(Auth::user()->tipo == 'administrador' or 'empleado' or 'registrado')
+        @if(Auth::user()->tipo == 'administrador' or 'registrado')
         <section class="reservation">
-
-
         <img class="img-responsive section-icon hidden-sm hidden-xs">
         <div class="wrapper">
             <div class="container-fluid">
                 <div class=" section-content">
                     <div class="row">
                         <div class="col-md-5 col-sm-6">
-                            <form class="contact-form" method="POST" action="{{ route('crearReserva') }}">
+                            <form class="contact-form" method="POST" action="{{ route('addReserva')}}">
                                 @csrf
                                 <div class="row">
-                                    
                                     <div class="col-md-6 col-sm-6">
                                         <div class="row">
                                             <div class="col-lg-12 con-gd">
                                                 
                                                 <div class="form-group">
                                                     <label>Nombre *</label>
-                                                    <input type="text" class="form-control reserve-form empty iconified" id="name" placeholder="" name="name" required="">
+                                                    <input type="text" class="form-control reserve-form empty iconified" id="name" value="{{ auth()->user()->name . ' ' .auth()->user()->lastname }}" name="name">
                                                 </div>
                                                 
                                             </div>
@@ -36,7 +34,7 @@
                                             <div class="col-lg-12 con-gd">
                                                 <div class="form-group">
                                                     <label>Email *</label>
-                                                    <input type="email" class="form-control reserve-form empty iconified" id="email" placeholder="" name="email" required="">
+                                                    <input type="email" class="form-control reserve-form empty iconified" id="email" value="{{ auth()->user()->email}} " name="email">
                                                 </div>
                                             </div>
                                         </div> 
@@ -48,14 +46,14 @@
                                             <div class="col-lg-12 con-gd">
                                                 <div class="form-group">
                                                     <label>Teléfono *</label>
-                                                    <input type="tel" class="form-control reserve-form empty iconified" id="phone" placeholder="" name="phone" required="">
+                                                    <input type="tel" class="form-control reserve-form empty iconified" id="phone" value="{{ old('phone') }}" name="phone">
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-12 con-gd">
                                                 <div class="form-group">
                                                     <label>Fecha_Hora*</label>
-                                                    <input type="text" class="form-control reserve-form empty iconified" id="datetimepicker1" placeholder="" name="dateandtime" required="">
+                                                    <input type="text" class="form-control reserve-form empty iconified" id="datetimepicker1" value="{{ old('dateandtime') }}" name="dateandtime" >
                                                 </div>
                                             </div>
                                         </div>
@@ -63,18 +61,23 @@
 
                                     <div class="col-md-12 col-sm-12">
                                         <div class="form-group">
-                                            <input type="num" class="form-control reserve-form empty iconified" name="num" id="num"  placeholder="  &#xf007;  Núm. Personas. min: 4 - max:15" required>
+                                            <input type="num" class="form-control reserve-form empty iconified" name="num" id="num"  value="{{ old('num') }}"  placeholder="  &#xf007;  Núm. Personas. min: 4 - max:15">
+                                            @if ($errors->has('num'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('num') }}</strong>
+                                                </span>
+                                            @endif
                                         </div>
                                     </div>
 
                                     <div class="col-md-12 col-sm-12">
-                                        <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3"  placeholder="  &#xf086;  Comentarios" required></textarea>
+                                        <textarea type="text" name="message" class="form-control reserve-form empty iconified" id="message" rows="3"  value="{{ old('message') }}" placeholder="  &#xf086;  Comentarios"></textarea>
                                     </div>
 
                                     <div class="col-md-12 col-sm-12">
                                         <button type="submit" id="submit" name="submit" class="btn btn-reservation">
                                             <span><i class="fa fa-check-circle-o"></i></span>
-                                            Realizar Reservaaaa
+                                            Realizar Reserva
                                         </button>
                                     </div>
 

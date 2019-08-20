@@ -22,7 +22,10 @@ class CreateReservationsTable extends Migration
             $table->string('message');
             $table->integer('num');
             $table->boolean('status');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+            
         });
     }
 

@@ -4,9 +4,7 @@
 
 <section class="contact py-5" id="contact">
     <div class="container pb-md-5">
-        <div class="header py-lg-5 pb-3 text-center">
-            <h3 class="tittle mb-lg-5 mb-3"> Contáctanos </h3>
-        </div>
+        <center><h3 class="tittle mb-lg-5 mb-3"> Contáctanos </h3></center>
 
         <div class="col-md-6">
             <div class=" mx-auto text-left">
@@ -42,7 +40,11 @@
                     <div class="row">
                         <div class="col-lg-10 contact-page">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-default">Enviar</button>
+                                 <button type="submit" id="submit" name="submit" class="btn btn-reservation">
+                                    <span><i class="fa fa-check-circle-o"></i> Enviar</span>
+
+                                </button>
+                                        
                             </div>
                         </div>
                     </div>

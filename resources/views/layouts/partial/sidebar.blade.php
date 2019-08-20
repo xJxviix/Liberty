@@ -38,8 +38,8 @@
                 </a>
             </li>
 
-            <li class="nav-item ">
-                <a class="nav-link" href="#">
+            <li class="{{ Request::is('layouts/app*') ? 'active': '' }}">
+                <a class="nav-link" href="/administrador/actividades">
                 <i class="material-icons">content_paste</i>
                 <p>Actividades</p>
                 </a>

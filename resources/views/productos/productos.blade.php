@@ -8,15 +8,10 @@
 
 
 <section>
-    <div class="pricing-filter">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 text-center">
-                <h3 class="tittle mb-lg-3 mb-3">NUESTRA CARTA</h3>
-            </div>
-        </div>
-    </div>
-
+           
     <div class="container-fluid py-lg-5">
+    <center><h3 class="tittle mb-lg-3 mb-3">NUESTRA CARTA</h3></center>
+
 
         <div class="middile-inner-con">
             <div class="tab-main mx-auto text-center">

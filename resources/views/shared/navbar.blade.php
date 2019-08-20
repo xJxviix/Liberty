@@ -1,3 +1,4 @@
+
 <div class="container-fluid px-lg-5">
 <!-- nav -->
     <nav class="py-2 d-lg-flex">
@@ -13,12 +14,7 @@
             <li><a href="{{ route('productoss') }}"" class="scroll">Productos</a></li>
             <li><a href="/actividades" class="scroll">Actividades</a></li>
             <li class="nav-item"><a class="nav-link" href="/reserva">Reservar Mesa</a></li>
-
-            @if( auth()->user() != null)
-                <li><a href="#about" class="scroll">Ofertas</a></li>
-            @endif
-            
-            <li><a href="#testimonials" class="scroll">Contactanos</a></li>
+            <li><a href="/contactanos" class="scroll">Contactanos</a></li>
         </ul>
 
                 

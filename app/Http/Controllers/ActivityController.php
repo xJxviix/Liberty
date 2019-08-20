@@ -2,7 +2,11 @@
 
 namespace Liberty\Http\Controllers;
 use Liberty\Activity;
+use Liberty\User;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
+
+use Carbon\Carbon;
 
 class ActivityController extends Controller
 {
@@ -14,31 +18,7 @@ class ActivityController extends Controller
     public function index()
     {
         $activities = Activity::all();
-        $events = [];
-        foreach ($activities as $activity){
-            $event = \Calendar::event(
-                $activity->nombre, //event title
-                false, //full day event?
-                ($activity->fecha . 'T' . $activity->hora_inicio), //start time (you can also use Carbon instead of DateTime)
-                ($activity->fecha . 'T' . $activity->hora_fin), //end time (you can also use Carbon instead of DateTime)
-                0, //optionally, you can specify an event ID
-                [
-                    'url' => route('reserva_actividad',  $activity->id),
-                    'color' => '#DF013A'
-                ]
-            );
-            array_push($events, $event);
-        }
-
-        //"Missing required parameters for [Route: reserva_actividad] [URI: actividades/reserva/{id}]."
-
-        $calendar = \Calendar::addEvents($events)->setOptions([ //set fullcalendar options
-            'firstDay' => 1,
-            'locale' => 'es'
-        ]); //add an array with addEvents
-
-
-        return view('actividades.index', compact('calendar'));
+        return view('actividades.actividades', compact('activities'));
     }
 
     /**
@@ -48,10 +28,10 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        //
+        return view('actividades.create');
     }
 
-    public function listarActividadesAdmin() 
+    public function adminIndex() 
     {
         $activities = Activity::all();
         return view('administrador.actividades', ['activities'=> $activities]);
@@ -71,7 +51,24 @@ class ActivityController extends Controller
             'fecha' => 'required|date',
             'hora_inicio' => 'required|date_format:H:i',
             'hora_fin' => 'required|date_format:H:i',
+            'image' => 'required|mimes:jpeg,jpg,bmp,png',
         ]);
+
+        $image = $request->file('image');
+        $slug = str_slug($request->name);
+        if (isset($image))
+        {
+            $currentDate = Carbon::now()->toDateString();
+            $auximage= $slug.'-'.$currentDate.'-'. uniqid() .'.'. $image->getClientOriginalExtension();
+
+            if (!file_exists('uploads/activities'))
+            {
+                mkdir('uploads/activities',0777,true);
+            }
+            $image->move('uploads/activities',$auximage);
+        }else{
+            $auximage = "default.png";
+        }
 
         $activity = new Activity();
         $activity->nombre = $request->nombre;
@@ -80,11 +77,10 @@ class ActivityController extends Controller
         $activity->hora_inicio = $request->hora_inicio;
         $activity->hora_fin = $request->hora_fin;
         $activity->user_id = auth()->user()->id;
+        $activity->image = $auximage;
 
         $activity->save();
-
-        $request->session()->flash('activitySucces', 'La actividad se ha creado correctamente.');
-
+        Toastr::success('La actividad se ha añadido correctamente','Success',["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 
@@ -155,13 +151,41 @@ class ActivityController extends Controller
     {
         $activity = Activity::find($id);
         if ($activity != null) {
-            $activity->destroy($id);
-            return view('administrador.index');
+            $activity->delete();
+            Toastr::success('El Producto se ha eliminado correctamente','Success',["positionClass" => "toast-top-right"]);
+            return redirect()->back();
+    
         }else {
-          
-        return view('administrador.index');
+             return redirect()->back();
         }
 
+
         
+    }
+
+
+    public function inscription(Request $request)
+    {
+        $this->validate($request,[
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'fecha' => 'required|date',
+            'hora_inicio' => 'required|date_format:H:i',
+            'hora_fin' => 'required|date_format:H:i',
+        ]);
+
+        $activity = new Activity();
+        $activity->nombre = $request->nombre;
+        $activity->descripcion = $request->descripcion;
+        $activity->fecha = $request->fecha;
+        $activity->hora_inicio = $request->hora_inicio;
+        $activity->hora_fin = $request->hora_fin;
+        $activity->user_id = auth()->user()->id;
+
+        $activity->save();
+
+        $request->session()->flash('activitySucces', 'La actividad se ha creado correctamente.');
+
+        return redirect()->back();
     }
 }

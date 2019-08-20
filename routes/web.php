@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Mail;
 /*
 * WELCOME
 */
-Route::get('/', function () {
-    return view('bienvenida');
-});
+Route::get('/', 'FrontController@index');
 
 /*
 * Contactanos - OK
@@ -53,13 +51,15 @@ Route::post('/perfilUsuario/{id}', 'UserController@updateUser')->middleware('aut
 /**
  * Reservar Mesa 
  */
-Route::get('/reserva', 'ReservationController@index')->middleware('auth');
+Route::get('/reserva', 'ReservationController@index');
 Route::post('/crearReserva', 'ReservationController@store')->name('crearReserva');
+Route::post('/crearReserva_user', 'ReservationController@userReservation')->name('addReserva');
 
 /**
  * Actividades
  */
-Route::get('/actividades','ActivityController@index');
+Route::get('/actividades','ActivityController@index')->name('actividades');
+
 Route::get('/actividades/reservaActividad/{id}', 'InscriptionController@reserva')->name('reserva_actividad')->middleware('auth');
 Route::post('/actividades/reservaActividad/{id}', 'InscriptionController@inscriptionToActivity')->name('reserva_actividad')->middleware('auth');
 Route::post('/actividades/reservaActividad/{id}/{email}', 'InscriptionController@inscriptionToActivity')->name('reservar_actividad')->middleware('auth');
@@ -77,9 +77,7 @@ Route::get('/administrador/usuarios', 'UserController@adminIndex')->name('mostra
 Route::get('/administrador/categorias', 'CategoryController@adminIndex')->name('mostrarCategoria')->middleware('auth');
 Route::get('/administrador/reservas', 'ReservationController@adminIndex')->name('mostrarReserva')->middleware('auth');
 Route::get('/administrador/productos', 'ProductController@adminIndex')->name('mostrarProducto')->middleware('auth');
-
-
-Route::get('/administrador/actividades', 'ActivityController@listarActividadesAdmin')->name('listarActividadesAdmin')->middleware('auth');
+Route::get('/administrador/actividades', 'ActivityController@adminIndex')->name('listarActividadesAdmin')->middleware('auth');
 
 // CRUD USUARIOS - OK
 Route::get('/administrador_createUser', 'UserController@create')->name('AñadirUsuario')->middleware('auth');
@@ -124,7 +122,9 @@ Route::get('reservations/{id}/destroy',
 ])->middleware('auth');
 
 // CRUD ACTIVIDAD - EMPEZAR ADAPTAR A LA VISTA DEL ADMIN CENTER
+
+Route::get('/administrador_createActivity', 'ActivityController@create')->name('AñadirActividad')->middleware('auth');
+Route::post('/administrador_addActivity', 'ActivityController@store')->name('crearActividad')->middleware('auth');
 Route::get('/administrador_editActivity/{id}', 'ActivityController@edit')->name('editarActividad')->middleware('auth');
-Route::post('/administrador_createActivity', 'ActivityController@store')->name('crearActividad')->middleware('auth');
 Route::post('/administrador_editActivity/{activity}', 'ActivityController@update')->name('actualizarActividad')->middleware('auth');
 Route::get('/administrador_deleteActivity/{id}', 'ActivityController@destroy')->name('eliminarActividad')->middleware('auth');

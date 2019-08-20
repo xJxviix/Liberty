@@ -24,7 +24,7 @@
                         <div class="card-footer">
                             <div class="stats">
                                 <i class="material-icons text-danger">category</i>
-                                <a href="#pablo">Total Categorías</a>
+                                <label href="#pablo">Total Categorías</label>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div class="card-footer">
                             <div class="stats">
                                 <i class="material-icons text-danger">fastfood</i>
-                                <a href="#pablo">Total Productos</a>
+                                <label href="#pablo">Total Productos</label>
                             </div>
                         </div>
                     </div>
@@ -56,13 +56,13 @@
                         </div>
                         <div class="card-content">
                             <p class="category">Actividades</p>
-                            <h3 class="title">
+                            <h3 class="title">{{ $activitiesCount }}
                             </h3>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
                                 <i class="material-icons text-danger">local_activity</i>
-                                <a href="#pablo">Total Actividades</a>
+                                <label href="#pablo">Total Actividades</label>
                             </div>
                         </div>
                     </div>

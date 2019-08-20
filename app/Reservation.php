@@ -16,7 +16,7 @@ class Reservation extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'email', 'date_and_time', 'message', 'num', 'status'
+        'name', 'phone', 'email', 'date_and_time', 'message', 'num', 'status', 'user_id'
     ];
 
     /*
@@ -24,7 +24,7 @@ class Reservation extends Model
     */
     public function user()
     {
-        return $this->hasMany('Liberty\User');
+        return $this->belongsTo('Liberty\User');
     }
     
 }

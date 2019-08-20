@@ -20,6 +20,7 @@ class AddActivitiesTable extends Migration
             $table->date('fecha');
             $table->time('hora_inicio');
             $table->time('hora_fin');
+            $table->string('image');
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

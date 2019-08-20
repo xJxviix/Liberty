@@ -110,7 +110,7 @@ Route::get('categories/{id}/destroy',
     'as' => 'eliminarCategoria'
 ])->middleware('auth');
 
-// CRUD PRODUCTOS
+// CRUD PRODUCTOS - OK
 Route::get('/administrador_createProduct', 'ProductController@create')->name('AñadirProducto')->middleware('auth');
 Route::post('/administrador_addProduct', 'ProductController@store')->name('crearProducto')->middleware('auth');
 

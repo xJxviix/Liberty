@@ -40,7 +40,7 @@
             @foreach($products as $product)
                 <div class="col-lg-3 ab-content">
                     <div class="ab-content-inner">
-                        <img src="{{ asset('uploads/item/'.$product->image) }}" alt="news image" class="img-fluid">
+                        <img src="{{ asset('uploads/productos/'.$product->image) }}" alt="news image" class="img-fluid">
                         <div class="ab-info-con">
                             <h4>{{ $product->nombre }}</h4>
                             <p>{{ $product->precio }} €</p>

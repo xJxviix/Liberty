@@ -132,7 +132,7 @@ class UserController extends Controller
         $user->save();
 
         Toastr::success('Se ha actualizado el usuario correctamente','Success',["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        return redirect()->route('mostrarUsuario')->with('successMsg','Item Successfully Updated');
     }
 
     /**

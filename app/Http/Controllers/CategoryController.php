@@ -11,6 +11,7 @@ use App\Mail\sendMail;
 use Storage;
 use Laracasts\Flash\FlashServiceProvider;
 use Intervention\Image\ImageManagerStatic as Image;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CategoryController extends Controller
 {
@@ -66,7 +67,8 @@ class CategoryController extends Controller
         $categories = Category::find($id);
         $categories->name = $request->name;
         $categories->save();
-        return redirect()->back()->with('successMsg','Se ha actualizado la categoria correctamente');
+        Toastr::success('Se ha actualizado la categoría correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->route('mostrarCategoria')->with('successMsg','Item Successfully Updated');
     }
 
     public function destroy($id)

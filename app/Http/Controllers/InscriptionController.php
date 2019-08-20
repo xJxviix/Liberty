@@ -40,16 +40,6 @@ class InscriptionController extends Controller
                     $request->session()->flash('success', 'Te has inscrito correctamente');
                     return back();
                 }
-                // es visitante TODO: se le ha de aplicar la tarifa de visitante
-                else {
-                    $inscription = new Inscription();
-                    $inscription->email = $request->email;
-                    $inscription->activity_id = $id;
-                    $inscription->save();
-
-                    $request->session()->flash('success', 'Te has inscrito correctamente');
-                    return back();
-                }
             }else {
                 return redirect('/');
             }

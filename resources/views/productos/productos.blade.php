@@ -30,7 +30,7 @@
                                 @foreach($product as $product)
                                     <li class="item" id="{{ $product->category->slug }}">
                                         <a href="#">
-                                            <img src="{{ asset('uploads/item/'.$product->image) }}" class="img-responsive" alt="Item" style="height: 300px; width: 400px;" >
+                                            <img src="{{ asset('uploads/productos/'.$product->image) }}" class="img-responsive" alt="Item" style="height: 300px; width: 400px;" >
                                             <div class="menu-desc text-center">
                                                 <p><h3>{{ $product->nombre }}</h3></p>
                                                 <span>

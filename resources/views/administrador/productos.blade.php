@@ -33,7 +33,7 @@
                                         <tr>
                                             <td>{{ $pro->id }}</td>
                                             <td><strong>{{ $pro->nombre }}</strong></td>
-                                            <td><img class="img-responsive img-thumbnail" src="{{ asset('uploads/item/'.$pro->image) }}" style="height: 100px; width: 100px" alt=""></td>
+                                            <td><img class="img-responsive img-thumbnail" src="{{ asset('uploads/productos/'.$pro->image) }}" style="height: 100px; width: 100px" alt=""></td>
                                             <td>{{ $pro->category->name }}</td>
                                             <td>{{ $pro->descripcion }}</td>
                                             <td><strong>{{ $pro->precio }} €</strong></td>

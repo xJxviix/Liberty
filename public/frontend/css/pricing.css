@@ -64,13 +64,13 @@
 
 #menu-pricing .item {
 	background-color: #367dc0;
-	box-shadow: 0px 2px 5px rgba(64, 62, 212, 0.671);
+	box-shadow: 0px 2px 5px rgba(124, 123, 189, 0.671);
 	vertical-align: top;
 	margin-bottom: 20px;
 	margin-right: 20px;
-	color: #fff;
+	color: rgba(214, 243, 47, 0.932);
 	text-align: center;
-	width: 30%;
+	width: 35%;
 	display: none;
 }
 

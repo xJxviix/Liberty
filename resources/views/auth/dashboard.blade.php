@@ -24,29 +24,68 @@
     @stack('css')
 </head>
 <body>
-    <div id="app">
-        <div class="wrapper">
 
-        @auth
-            
-            <div class="main-panel">
-                @if(Auth::user()->tipo == 'administrador')
-                    @include('layouts.partial.topbar')
-                @endif
+<div id="app">
+    <div class="wrapper">
+        <div class="main-panel">
 
-                @if(Auth::user()->tipo == 'administrador')
-                    @include('layouts.partial.sidebar')
-                @endif
-                
-                @yield('content')
-                
-                @if(Auth::user()->tipo == 'administrador')
-                    @include('layouts.partial.footer')
-                @endif
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#"> Bienvenido, {{ Auth::user()->name }} </a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    <i class="material-icons">exit_to_app</i>
+                                    Logout
+                                </a>
+                                <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            @if(Auth::user()->tipo == 'registrado')
+                @include('layouts.user_profile.sidebar')
+            @endif
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header" data-background-color="orange">
+                                    <i class="material-icons">category</i>
+                                </div>
+                                <div class="card-content">
+                                    <p class="category">Categorias</p>
+                                    <h3 class="title">
+                                    </h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons text-danger">category</i>
+                                        <label href="#pablo">Total Categorías</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        @endauth
+
+            @if(Auth::user()->tipo == 'registrado')
+                    @include('layouts.partial.footer')
+            @endif
         </div>
     </div>
+</div>
+
 
     <!-- Scripts -->
     <!--   Core JS Files   -->
@@ -78,5 +117,10 @@
     </script>
     {!! Toastr::message() !!}
     @stack('scripts')
+
+
+
+
 </body>
+
 </html>

@@ -54,8 +54,6 @@
     </div>
 </section>
 
-
-
 <section class="contact py-5" id="contact">
     <div class="container pb-md-5">
         <ul class="list-unstyled row text-left mb-lg-5 mb-3">

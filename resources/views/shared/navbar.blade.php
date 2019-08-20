@@ -35,6 +35,12 @@
                     @endif
                 @endauth
                 <li><a href="/perfilUsuario/{{ Auth::user()->id }}" class="scroll"><span class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }} </a></li>
+                
+                <li>
+                    <a href="/user_profile_reservations/{{ Auth::user()->id }}" class="scroll"><span class="glyphicon glyphicon-tags"></span>
+                
+                    </a>
+                </li>
 
                 <li>
                     <a href="{{ route('logout') }}"
@@ -46,6 +52,9 @@
                         {{ csrf_field() }}
                     </form>
                 </li>
+
+
+               
                 
                 @endif
         </ul>

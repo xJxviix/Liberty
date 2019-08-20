@@ -1,7 +1,7 @@
 @extends('master2')
 @section('title','Perfil Usuario')
 @section('content')
-<br>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -78,21 +78,6 @@
                             </div>
                         </div>
 
-                        {{-- Subir Foto Perfil --}}
-                        <div class="form-group row">
-                            <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('Subir Foto') }}</label>
-
-                            <div class="col-md-6">
-                                <input font-size="10" id="photo" name="photo" class="input-file" type="file" accept=".jpg, .jpeg, .png"></br>
-                                <p>Formatos validos: .jpg, .jpeg, .png</p>
-                                        @if ($errors->has('photo'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('photo') }}</strong>
-                                        </span>
-                                        @endif
-                            </div>
-                        </div>
-
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -107,13 +92,5 @@
         </div>
     </div>
 </div>
-<br>
-
-<p> Mostrar Reservas </p>
-
-@foreach($reservations as $res)
-    <p>{{ $res->name }}</p>
-    <p>{{ $res->status}}</p>
-@endforeach
 
 @endsection

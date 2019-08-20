@@ -47,12 +47,14 @@ Perfil Usuario - Registrado - OK
 */
 Route::get('/perfilUsuario/{id}', 'UserController@editUser')->middleware('auth');
 Route::post('/perfilUsuario/{id}', 'UserController@updateUser')->middleware('auth');
+Route::get('/user_profile_reservations/{id}', 'UserController@userReservation')->middleware('auth');
 
 /**
  * Reservar Mesa 
  */
 Route::get('/reserva', 'ReservationController@index');
 Route::post('/crearReserva', 'ReservationController@store')->name('crearReserva');
+
 Route::post('/crearReserva_user', 'ReservationController@userReservation')->name('addReserva');
 
 /**
@@ -63,6 +65,12 @@ Route::get('/actividades','ActivityController@index')->name('actividades');
 Route::get('/actividades/reservaActividad/{id}', 'InscriptionController@reserva')->name('reserva_actividad')->middleware('auth');
 Route::post('/actividades/reservaActividad/{id}', 'InscriptionController@inscriptionToActivity')->name('reserva_actividad')->middleware('auth');
 Route::post('/actividades/reservaActividad/{id}/{email}', 'InscriptionController@inscriptionToActivity')->name('reservar_actividad')->middleware('auth');
+
+
+/**
+ * PERFIL USUARIO REGISTRADO
+ */
+Route::get('/user_profile/{id}', 'UserController@index')->name('userProfile')->middleware('auth');
 
 
 /**                 **
@@ -105,6 +113,7 @@ Route::get('categories/{id}/destroy',
 // CRUD PRODUCTOS
 Route::get('/administrador_createProduct', 'ProductController@create')->name('AñadirProducto')->middleware('auth');
 Route::post('/administrador_addProduct', 'ProductController@store')->name('crearProducto')->middleware('auth');
+
 Route::get('/administrador_editProduct/{id}', 'ProductController@edit')->name('editarProducto')->middleware('auth');
 Route::post('/administrador_editProduct/{id}', 'ProductController@update')->name('actualizarProducto')->middleware('auth');
 Route::get('products/{id}/destroy',

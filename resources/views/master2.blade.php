@@ -27,11 +27,23 @@
         @yield('title')
     </title>
 
+    <link rel="stylesheet" href="https://getbootstrap.com/dist/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/pricing.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datetimepicker.min.css') }}">
+
+    <!-- //AÑADIDO PARA NAVBAR -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="public/plugins/trumbowygs/ui/trumbowyg.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.7/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="public/plugins/trumbowygs/trumbowyg.min.js"></script>
+    <!-- //AÑADIDO PARA NAVBAR -->
+
  
     <!-- //Meta tag Keywords -->
     <!-- Custom-Files -->

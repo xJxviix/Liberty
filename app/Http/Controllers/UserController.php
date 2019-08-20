@@ -22,7 +22,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $reservations = Reservation::where('status',false)->get();
+        return view('auth.dashboard',compact('reservations'));
     }
 
     public function dashboard() {
@@ -179,6 +180,22 @@ class UserController extends Controller
         Toastr::success('El usuario se ha actualizado correctamente','Success',["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
+
+
+    /*
+    Mostrar Reservas del usuario
+    */
+    public function userReservation($id)
+    {
+        //$users=User::find($id);  
+        //Mostrar reservas relacionada con el ID del usuario
+        $reservations = DB::table('reservations')->where('user_id', $id)->get();
+        $activities = DB::table('activities')->where('user_id', $id)->get();
+        return view('usuarios.userProfile.user_reservation', compact('reservations', 'activities'));
+
+    }
+
+    
 
 
 }

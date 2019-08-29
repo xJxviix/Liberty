@@ -42,6 +42,11 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
 /*
 Perfil Usuario - Registrado - OK
 */
@@ -78,57 +83,57 @@ Route::get('/user_profile/{id}', 'UserController@index')->name('userProfile')->m
  *                  **/
 
 //Admin Dashboard
-Route::get('/administrar', 'UserController@dashboard')->name('administrar')->middleware('auth');
+Route::get('/administrar', 'UserController@dashboard')->name('administrar')->middleware('auth')->middleware('admin');
 
 // Mostrar Listado
-Route::get('/administrador/usuarios', 'UserController@adminIndex')->name('mostrarUsuario')->middleware('auth');
-Route::get('/administrador/categorias', 'CategoryController@adminIndex')->name('mostrarCategoria')->middleware('auth');
-Route::get('/administrador/reservas', 'ReservationController@adminIndex')->name('mostrarReserva')->middleware('auth');
-Route::get('/administrador/productos', 'ProductController@adminIndex')->name('mostrarProducto')->middleware('auth');
-Route::get('/administrador/actividades', 'ActivityController@adminIndex')->name('listarActividadesAdmin')->middleware('auth');
+Route::get('/administrador/usuarios', 'UserController@adminIndex')->name('mostrarUsuario')->middleware('auth')->middleware('admin');
+Route::get('/administrador/categorias', 'CategoryController@adminIndex')->name('mostrarCategoria')->middleware('auth')->middleware('admin');
+Route::get('/administrador/reservas', 'ReservationController@adminIndex')->name('mostrarReserva')->middleware('auth')->middleware('admin');
+Route::get('/administrador/productos', 'ProductController@adminIndex')->name('mostrarProducto')->middleware('auth')->middleware('admin');
+Route::get('/administrador/actividades', 'ActivityController@adminIndex')->name('listarActividadesAdmin')->middleware('auth')->middleware('admin');
 
 // CRUD USUARIOS - OK
-Route::get('/administrador_createUser', 'UserController@create')->name('AñadirUsuario')->middleware('auth');
-Route::post('/administrador_addUser', 'UserController@store')->name('crearUsuario')->middleware('auth');
-Route::get('/administrador_editUsers/{id}', 'UserController@edit')->name('editarUsuario')->middleware('auth');
-Route::post('/administrador_editUsers/{id}', 'UserController@update')->name('actualizarUsuario')->middleware('auth');
+Route::get('/administrador_createUser', 'UserController@create')->name('AñadirUsuario')->middleware('auth')->middleware('admin');
+Route::post('/administrador_addUser', 'UserController@store')->name('crearUsuario')->middleware('auth')->middleware('admin');
+Route::get('/administrador_editUsers/{id}', 'UserController@edit')->name('editarUsuario')->middleware('auth')->middleware('admin');
+Route::post('/administrador_editUsers/{id}', 'UserController@update')->name('actualizarUsuario')->middleware('auth')->middleware('admin');
 Route::get('users/{id}/destroy',
 [
     'uses' => 'UserController@destroy',
     'as' => 'eliminarUsuario'
-])->middleware('auth');
+])->middleware('auth')->middleware('admin');
 
 
 // CRUD CATEGORIAS - OK
-Route::get('/administrador_createCategory', 'CategoryController@create')->name('AñadirCategoria')->middleware('auth');
-Route::post('/administrador_addCategory', 'CategoryController@store')->name('crearCategoria')->middleware('auth');
-Route::get('/administrador_editCategory/{id}', 'CategoryController@edit')->name('editarCategoria')->middleware('auth');
-Route::post('/administrador_editCategory/{id}', 'CategoryController@update')->name('actualizarCategoria')->middleware('auth');
+Route::get('/administrador_createCategory', 'CategoryController@create')->name('AñadirCategoria')->middleware('auth')->middleware('admin');
+Route::post('/administrador_addCategory', 'CategoryController@store')->name('crearCategoria')->middleware('auth')->middleware('admin');
+Route::get('/administrador_editCategory/{id}', 'CategoryController@edit')->name('editarCategoria')->middleware('auth')->middleware('admin');
+Route::post('/administrador_editCategory/{id}', 'CategoryController@update')->name('actualizarCategoria')->middleware('auth')->middleware('admin');
 Route::get('categories/{id}/destroy',
 [
     'uses' => 'CategoryController@destroy',
     'as' => 'eliminarCategoria'
-])->middleware('auth');
+])->middleware('auth')->middleware('admin');
 
 // CRUD PRODUCTOS - OK
-Route::get('/administrador_createProduct', 'ProductController@create')->name('AñadirProducto')->middleware('auth');
-Route::post('/administrador_addProduct', 'ProductController@store')->name('crearProducto')->middleware('auth');
+Route::get('/administrador_createProduct', 'ProductController@create')->name('AñadirProducto')->middleware('auth')->middleware('admin');
+Route::post('/administrador_addProduct', 'ProductController@store')->name('crearProducto')->middleware('auth')->middleware('admin');
 
-Route::get('/administrador_editProduct/{id}', 'ProductController@edit')->name('editarProducto')->middleware('auth');
-Route::post('/administrador_editProduct/{id}', 'ProductController@update')->name('actualizarProducto')->middleware('auth');
+Route::get('/administrador_editProduct/{id}', 'ProductController@edit')->name('editarProducto')->middleware('auth')->middleware('admin');
+Route::post('/administrador_editProduct/{id}', 'ProductController@update')->name('actualizarProducto')->middleware('auth')->middleware('admin');
 Route::get('products/{id}/destroy',
 [
     'uses' => 'ProductController@destroy',
     'as' => 'eliminarProducto'
-])->middleware('auth');
+])->middleware('auth')->middleware('admin');
 
 //CRUD RESERVAS - OK
-Route::post('/administrador_editReservation/{id}', 'ReservationController@status')->name('confirmarReserva')->middleware('auth');
+Route::post('/administrador_editReservation/{id}', 'ReservationController@status')->name('confirmarReserva')->middleware('auth')->middleware('admin');
 Route::get('reservations/{id}/destroy',
 [
     'uses' => 'ReservationController@destroy',
     'as' => 'eliminarReserva'
-])->middleware('auth');
+])->middleware('auth')->middleware('admin');
 
 // CRUD ACTIVIDAD - EMPEZAR ADAPTAR A LA VISTA DEL ADMIN CENTER
 

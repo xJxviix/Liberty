@@ -14,10 +14,10 @@
                         
                         <div>
                             <center>
-                            <img class="img-responsive" src="https://images.vexels.com/media/users/3/158439/isolated/preview/579fcb8bc5962df84a9f4abfa9b62068-hamburguesa-comida-logo-logotipo-silueta-by-vexels.png" width="300" height="300" align="middle">
+                            <img class="img-responsive" src="https://scontent.fbcn3-1.fna.fbcdn.net/v/t31.0-8/18953396_1423501684374757_6742780887359647251_o.jpg?_nc_cat=100&_nc_oc=AQkfSH6IWoUx9QJma4hJK9fmiY-0xvauwjlcAeVNr9KRkTxqtKfzmGibByij3nFRYv4&_nc_ht=scontent.fbcn3-1.fna&oh=2c064c11f4368fb2a1d8074fccc2b82d&oe=5DDB80CE" width="300" height="300" align="middle">
                             </center>
                         </div>
-                        
+                        <br>
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
@@ -43,18 +43,6 @@
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
                             </div>
                         </div>
 

@@ -55,32 +55,31 @@ class ProductController extends Controller
             'image' => 'required|mimes:jpeg,jpg,bmp,png',
         ]);
 
-        $product = Product::find($id);
         $image = $request->file('image');
         $slug = str_slug($request->name);
         if (isset($image))
         {
             $currentDate = Carbon::now()->toDateString();
-            $imagename = $slug.'-'.$currentDate.'-'. uniqid() .'.'. $image->getClientOriginalExtension();
+            $auximage= $slug.'-'.$currentDate.'-'. uniqid() .'.'. $image->getClientOriginalExtension();
 
             if (!file_exists('uploads/productos'))
             {
                 mkdir('uploads/productos',0777,true);
             }
-            unlink('uploads/productos/'.$item->image);
-            $image->move('uploads/productos',$imagename);
+            $image->move('uploads/productos',$auximage);
         }else{
-            $imagename = $item->image;
+            $auximage = "default.png";
         }
 
-        $products->category_id = $request->category_id;
-        $products->nombre = $request->nombre;
-        $products->descripcion = $request->descripcion;
-        $products->precio = $request->precio;
-        $products->image = $imagename;
-        $products->save();
-        Toastr::success('El producto se ha añadido correctamente','Success',["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+        $product = new Product();
+        $product->nombre = $request->nombre;
+        $product->descripcion = $request->descripcion;
+        $product->precio = $request->precio;
+        $product->image = $auximage;
+        $product->category_id = $request->category_id;
+        $product->save();
+        Toastr::success('Se ha añadido el producto correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->route('mostrarProducto')->with('successMsg','Item Successfully Updated');
 
     }
 

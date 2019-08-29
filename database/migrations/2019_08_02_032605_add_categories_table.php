@@ -22,7 +22,7 @@ class AddCategoriesTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations.s
      *
      * @return void
      */

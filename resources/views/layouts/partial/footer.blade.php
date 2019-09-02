@@ -5,7 +5,7 @@
             <script>
                 document.write(new Date().getFullYear())
             </script>
-            <strong> Liberty BeniReggae All Rights Reserved</strong>
+            <strong> Liberty All Rights Reserved</strong>
             
     </div>
 </footer>

@@ -106,7 +106,7 @@ class ActivityController extends Controller
         $activity = Activity::find($id);
 
         if ($activity != null) {
-            return view('administrador/editActivity', ['activity'=> $activity]);
+            return view('actividades/edit', ['activity'=> $activity]);
         }else {
             return redirect()->back();
         }
@@ -116,7 +116,6 @@ class ActivityController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -125,20 +124,37 @@ class ActivityController extends Controller
             'nombre' => 'required',
             'descripcion' => 'required',
             'fecha' => 'required|date',
-            'hora_inicio' => 'required|date_format:H:i',
-            'hora_fin' => 'required|date_format:H:i',
         ]);
+
+        $activity = Activity::find($id);
+
+        $image = $request->file('image');
+        $slug = str_slug($request->name);
+        if (isset($image))
+        {
+            $currentDate = Carbon::now()->toDateString();
+            $auximage = $slug.'-'.$currentDate.'-'. uniqid() .'.'. $image->getClientOriginalExtension();
+
+            if (!file_exists('uploads/activities'))
+            {
+                mkdir('uploads/activities',0777,true);
+            }
+            unlink('uploads/activities/'.$activity->image);
+            $image->move('uploads/activities',$auximage);
+        }else{
+            $auximage = $activity->image;
+        }
 
         $activity->nombre = $request->nombre;
         $activity->descripcion = $request->descripcion;
         $activity->fecha = $request->fecha;
         $activity->hora_inicio = $request->hora_inicio;
         $activity->hora_fin = $request->hora_fin;
-
+        $activity->image = $auximage;
         $activity->save();
+        Toastr::success('La actividad se ha actualizado correctamente','Success',["positionClass" => "toast-top-right"]);
+        return redirect()->route('listarActividadesAdmin')->with('successMsg','Activity Successfully Updated');
 
-        $request->session()->flash('successUpdate', 'La actividad se ha actualizado correctamente');
-        return redirect()->back();
     }
 
     /**
@@ -158,9 +174,6 @@ class ActivityController extends Controller
         }else {
              return redirect()->back();
         }
-
-
-        
     }
 
 

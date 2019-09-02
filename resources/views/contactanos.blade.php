@@ -1,4 +1,4 @@
-@extends('master2')
+@extends('master')
 @section('title','Liberty')
 @section('content')
 
@@ -58,8 +58,7 @@
                 <div class="row">
                     <li class="col-md-9 text-left">
                         <section id="map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.7544251699815!2d-0.12095318494634899!3d38.53942867557045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6204f0f0af2ae1%3A0x1585f292b7726f31!2sLiberty!5e0!3m2!1ses!2ses!4v1565890535320!5m2!1ses!2ses"
-                                width="500" height="400" frameborder="0" style="border:ridge" allowfullscreen style="width:100%;"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24966.737373678494!2d-0.14750510331718703!3d38.53740619615953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6204dca62575c3%3A0x219fa90c0ff26eb5!2sBenidorm%2C%20Alicante!5e0!3m2!1ses!2ses!4v1567383910558!5m2!1ses!2ses" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                         </section> 
                     </li>
                 </div>
@@ -77,8 +76,8 @@
                     </div>
                     <div class="col-md-9 text-left">
                         <h6>Dirección</h6>
-                        <p>Av de Murcia, 11, 
-                            <br>03503 Benidorm, Alicante. </p>
+                        <p>Av de Alicante, 21, 
+                            <br>03505 Benidorm, Alicante. </p>
                     </div>
                 </div>
             </li>
@@ -90,7 +89,7 @@
                     </div>
                     <div class="col-md-9 text-left">
                         <h6>Email</h6>
-                        <a href="mailto:info@example.com">liberty.benireggae@gmail.com</a>
+                        <a href="mailto:info@example.com">burguer.benidorm@gmail.com<</a>
                     </div>
                 </div>
             </li>
@@ -101,7 +100,7 @@
                     </div>
                     <div class="col-md-9 text-left">
                         <h6>Teléfono</h6>
-                        <p>+34 659 31 69 61</p>
+                        <p>+34 666 66 66 66</p>
                     </div>
                 </div>
             </li>

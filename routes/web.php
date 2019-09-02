@@ -59,15 +59,14 @@ Route::get('/user_profile_reservations/{id}', 'UserController@userReservation')-
  */
 Route::get('/reserva', 'ReservationController@index');
 Route::post('/crearReserva', 'ReservationController@store')->name('crearReserva');
-
 Route::post('/crearReserva_user', 'ReservationController@userReservation')->name('addReserva');
 
 /**
  * Actividades
  */
-Route::get('/actividades','ActivityController@index')->name('actividades');
+Route::get('/actividades','ActivityController@index')->name('actividades')->middleware('auth');
+Route::get('/actividades/Inscribirse/{id}', 'InscriptionController@reserva')->name('inscribir_actividad')->middleware('auth');
 
-Route::get('/actividades/reservaActividad/{id}', 'InscriptionController@reserva')->name('reserva_actividad')->middleware('auth');
 Route::post('/actividades/reservaActividad/{id}', 'InscriptionController@inscriptionToActivity')->name('reserva_actividad')->middleware('auth');
 Route::post('/actividades/reservaActividad/{id}/{email}', 'InscriptionController@inscriptionToActivity')->name('reservar_actividad')->middleware('auth');
 
@@ -135,7 +134,7 @@ Route::get('reservations/{id}/destroy',
     'as' => 'eliminarReserva'
 ])->middleware('auth')->middleware('admin');
 
-// CRUD ACTIVIDAD - EMPEZAR ADAPTAR A LA VISTA DEL ADMIN CENTER
+// CRUD ACTIVIDAD
 
 Route::get('/administrador_createActivity', 'ActivityController@create')->name('AñadirActividad')->middleware('auth');
 Route::post('/administrador_addActivity', 'ActivityController@store')->name('crearActividad')->middleware('auth');

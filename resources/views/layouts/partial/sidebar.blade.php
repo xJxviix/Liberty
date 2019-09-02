@@ -2,7 +2,7 @@
 
     <div class="logo">
         <a href="/"" class="simple-text">
-            Liberty Benireggae
+            Liberty
         </a>
     </div>
     

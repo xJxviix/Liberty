@@ -1,4 +1,4 @@
-@extends('master2')
+@extends('master')
 @section('title','Actividades')
 @section('content')
 <section id="reserve" class="reserve">
@@ -7,7 +7,6 @@
         <h3 class="tittle mb-lg-5 mb-3"> Actividades </h3>
     </div>
 
- 
             @for ($i = 0; $i < sizeof($activities); $i+=2)
                 <div class="container">
                     @if($i < sizeof($activities))
@@ -16,9 +15,12 @@
                                     <img src="{{ asset('uploads/activities/'.$activities[$i]->image) }}" 
                                     class="card-img-top" style="width: 100%; height: 30rem" alt="actividades liberty">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{$activities[$i]->nombre}}</h5>
-                                        <p class="card-text">{{$activities[$i]->descripcion}}</p>
-                                        <a href="" class="btn btn-primary">Inscribirse Actividad</a>
+                                        <h5 class="card-title"><b>{{$activities[$i]->nombre}}</b></h5>
+                                        <p class="card-text"><b>Descripción: </b>{{$activities[$i]->descripcion}}</p>
+                                        <p class="card-text"><b>Fecha:</b> {{$activities[$i]->fecha}}</p>
+                                        <p class="card-text"><b>Horario Inicio:</b> {{$activities[$i]->hora_inicio}}</p>
+                                        <p class="card-text"><b>Horario Final:</b> {{$activities[$i]->hora_fin}}</p>
+                                        <a method="POST" href="{{ route('inscribir_actividad',['id'=> $activities[$i]->id])}}" class="btn btn-primary">Inscribirse Actividad</a>
                                     </div>
                             </div>
                         </div>
@@ -33,9 +35,12 @@
                                     <img src="{{ asset('uploads/activities/'.$activities[$i+1]->image) }}" 
                                     class="card-img-top" style="width: 100%; height: 30rem" alt="actividades liberty">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{$activities[$i+1]->nombre}}</h5>
-                                        <p class="card-text">{{$activities[$i+1]->descripcion}}</p>
-                                        <a href="/reserva_instalacion" class="btn btn-primary">Reservar</a>
+                                        <h5 class="card-title"><b>{{$activities[$i+1]->nombre}}</b></h5>
+                                        <p class="card-text"><b>Descripción: </b>{{$activities[$i+1]->descripcion}}</p>
+                                        <p class="card-text"><b>Fecha:</b> {{$activities[$i+1]->fecha}}</p>
+                                        <p class="card-text"><b>Horario Inicio:</b> {{$activities[$i+1]->hora_inicio}}</p>
+                                        <p class="card-text"><b>Horario Final:</b> {{$activities[$i+1]->hora_fin}}</p>
+                                        <a href="{{ route('inscribir_actividad',['id'=> $activities[$i+1]->id])}}" class="btn btn-primary">Inscribirse Actividad</a>
                                     </div>
                             </div>
                         </div>

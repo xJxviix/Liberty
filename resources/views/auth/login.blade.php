@@ -1,4 +1,4 @@
-@extends('master2')
+@extends('master')
 @section('title','Iniciar sesión')
 @section('content')    
 <br>            
@@ -14,7 +14,8 @@
                         
                         <div>
                             <center>
-                            <img class="img-responsive" src="https://scontent.fbcn3-1.fna.fbcdn.net/v/t31.0-8/18953396_1423501684374757_6742780887359647251_o.jpg?_nc_cat=100&_nc_oc=AQkfSH6IWoUx9QJma4hJK9fmiY-0xvauwjlcAeVNr9KRkTxqtKfzmGibByij3nFRYv4&_nc_ht=scontent.fbcn3-1.fna&oh=2c064c11f4368fb2a1d8074fccc2b82d&oe=5DDB80CE" width="300" height="300" align="middle">
+                            <img class="img-responsive" src="https://cdn.pixabay.com/photo/2012/04/13/01/51/hamburger-31775_1280.png
+                            " width="300" height="300" align="middle">
                             </center>
                         </div>
                         <br>

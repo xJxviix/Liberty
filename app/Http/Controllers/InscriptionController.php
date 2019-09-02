@@ -17,7 +17,7 @@ class InscriptionController extends Controller
         if ($activity == null) {
             return redirect('/');
         }else {
-            return view('actividades.register')->with('activity', $activity);
+            return view('actividades.reserva')->with('activity', $activity);
         }
 
     }
@@ -33,7 +33,8 @@ class InscriptionController extends Controller
                 // es socio TODO: se le ha de aplicar la tarifa de socio
                 if ($usuario != null) {
                     $inscription = new Inscription();
-                    $inscription->email = $request->email;
+                   // $inscription->email = $request->email;
+                    $inscription->email = \Auth::user()->email;
                     $inscription->activity_id = $id;
                     $inscription->save();
 
@@ -47,5 +48,6 @@ class InscriptionController extends Controller
             return redirect('/');
         }
     }
+
     
 }

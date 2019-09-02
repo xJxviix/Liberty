@@ -1,4 +1,4 @@
-@extends('master2')
+@extends('master')
 @section('title','Liberty')
 @section('content')
 
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-md-9 text-left">
                         <h6>Dirección</h6>
-                        <p>Av de Murcia, 11, 
+                        <p>Av de Alicante, 21, 
                             <br>03503 Benidorm, Alicante. </p>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-md-9 text-left">
                         <h6>Email</h6>
-                        <a href="mailto:info@example.com">liberty.benireggae@gmail.com</a>
+                        <a href="mailto:info@example.com">burguer.benidorm@gmail.com<</a>
                     </div>
                 </div>
             </li>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="col-md-9 text-left">
                         <h6>Teléfono</h6>
-                        <p>+34 659 31 69 61</p>
+                        <p>+34 666 66 66 66</p>
                     </div>
                 </div>
             </li>

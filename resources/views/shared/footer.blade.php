@@ -6,7 +6,7 @@
                 <div class="row footer-top-inner-w3ls">
                     <div class="col-lg-4 col-md-6 footer-top mt-md-0 mt-sm-5">
                         <h2>
-                            <a href="/"><span class="fa fa-align-center" aria-hidden="true"></span> Liberty</a>
+                            <a href="/"><span class="fa fa-align-center" aria-hidden="true"></span>Liberty</a>
                         </h2>
                     </div>
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
@@ -32,12 +32,12 @@
                             <hr>
                             <div class="last-w3ls-contact">
                                 <p>
-                                <span class="fa fa-envelope-open-o">  </span><a href="mailto:jxvi21@gmail.com">liberty.benireggae@gmail.com</a>
+                                <span class="fa fa-envelope-open-o">  </span><a href="mailto:jxvi21@gmail.com">burguer.benidorm@gmail.com</a>
                                 </p>
                             </div>
 
                             <div class="last-w3ls-contact my-2">
-                               <p><span class="fa fa-phone"></span> +34 659 31 69 61</p>
+                               <p><span class="fa fa-phone"></span> +34 666 66 66 66</p>
                             </div>
 
                         </div>
@@ -47,22 +47,22 @@
 
                 </div>
 
-                <p class="copy-right-grids text-li text-center my-sm-4 my-4">© 2019 Liberty BeniReggae All Rights Reserved</p>
+                <p class="copy-right-grids text-li text-center my-sm-4 my-4">© 2019 Liberty All Rights Reserved</p>
                 
                 <div class="w3ls-footer text-center mt-4">
                     <ul class="list-unstyled w3ls-icons">
                         <li>
-                            <a href="https://www.facebook.com/libertybenireggae/?rc=p">
+                            <a href="">
                                 <span class="fa fa-facebook"></span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/liberty.benireggae/">
+                            <a href="">
                                 <span class="fa fa-instagram"></span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.tripadvisor.es/Restaurant_Review-g187525-d10397875-Reviews-Liberty_benireggae-Benidorm_Costa_Blanca_Province_of_Alicante_Valencian_Country.html">
+                            <a href="">
                                 <span class="fa fa-tripadvisor"></span>
                             </a>
                         </li>

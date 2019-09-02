@@ -176,6 +176,7 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->lastname = $request->input('lastname');
+        $user->password = bcrypt($request['password']);
         $user->save();                
         Toastr::success('El usuario se ha actualizado correctamente','Success',["positionClass" => "toast-top-right"]);
         return redirect()->back();

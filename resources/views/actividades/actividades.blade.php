@@ -20,7 +20,8 @@
                                         <p class="card-text"><b>Fecha:</b> {{$activities[$i]->fecha}}</p>
                                         <p class="card-text"><b>Horario Inicio:</b> {{$activities[$i]->hora_inicio}}</p>
                                         <p class="card-text"><b>Horario Final:</b> {{$activities[$i]->hora_fin}}</p>
-                                        <a method="POST" href="{{ route('inscribir_actividad',['id'=> $activities[$i]->id])}}" class="btn btn-primary">Inscribirse Actividad</a>
+                                        <a method="POST" href="" class="btn btn-primary">Inscribirse Actividad</a>
+                                        {{-- {{ route('inscribir_actividad',['id'=> $activities[$i]->id])}} --}}
                                     </div>
                             </div>
                         </div>
@@ -40,7 +41,7 @@
                                         <p class="card-text"><b>Fecha:</b> {{$activities[$i+1]->fecha}}</p>
                                         <p class="card-text"><b>Horario Inicio:</b> {{$activities[$i+1]->hora_inicio}}</p>
                                         <p class="card-text"><b>Horario Final:</b> {{$activities[$i+1]->hora_fin}}</p>
-                                        <a href="{{ route('inscribir_actividad',['id'=> $activities[$i+1]->id])}}" class="btn btn-primary">Inscribirse Actividad</a>
+                                        <a href="" class="btn btn-primary">Inscribirse Actividad</a>
                                     </div>
                             </div>
                         </div>
